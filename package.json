@@ -13,7 +13,7 @@
   "bin": {"evalsutra": "./packages/cli/evalsutra.mjs"},
   "files": ["packages", ".agents", "skills", ".claude-plugin", "suites", "examples", "policies", "docs", "LICENSE", "README.md", "SECURITY.md", "CHANGELOG.md"],
   "scripts": {
-    "test": "node --test tests/*.test.mjs",
+    "test": "node --test",
     "doctor": "node packages/cli/evalsutra.mjs doctor",
     "demo": "node packages/cli/evalsutra.mjs run --suite suites/demo.json --observations examples/demo-observations.json --out artifacts/demo",
     "validate": "node packages/cli/evalsutra.mjs validate --suite suites/demo.json"
