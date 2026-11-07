@@ -1,0 +1,21 @@
+{
+  "name": "evalsutra",
+  "version": "0.2.0",
+  "description": "EvalSutra AI: evidence-first, keyless, offline agent evaluation CLI plus 18 portable agent skills for Claude Code, Cursor, Codex, Gemini CLI and Copilot.",
+  "keywords": ["ai-agents", "evaluation", "agent-skills", "claude-code", "cursor", "codex", "gemini-cli", "copilot", "llm-evals", "cli"],
+  "license": "Apache-2.0",
+  "author": "Vatsal Shah",
+  "homepage": "https://github.com/shahvatsalofficial/evalsutra#readme",
+  "repository": {"type": "git", "url": "git+https://github.com/shahvatsalofficial/evalsutra.git"},
+  "bugs": {"url": "https://github.com/shahvatsalofficial/evalsutra/issues"},
+  "type": "module",
+  "engines": {"node": ">=20"},
+  "bin": {"evalsutra": "./packages/cli/evalsutra.mjs"},
+  "files": ["packages", ".agents", "skills", ".claude-plugin", "suites", "examples", "policies", "docs", "LICENSE", "README.md", "SECURITY.md", "CHANGELOG.md"],
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "doctor": "node packages/cli/evalsutra.mjs doctor",
+    "demo": "node packages/cli/evalsutra.mjs run --suite suites/demo.json --observations examples/demo-observations.json --out artifacts/demo",
+    "validate": "node packages/cli/evalsutra.mjs validate --suite suites/demo.json"
+  }
+}

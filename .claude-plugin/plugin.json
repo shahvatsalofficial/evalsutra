@@ -1,0 +1,8 @@
+{
+  "name": "evalsutra",
+  "version": "0.2.0",
+  "description": "Evidence-first agent evaluation skill for Claude Code; offline evaluator CLI is separate",
+  "author": {
+    "name": "Vatsal Shah"
+  }
+}

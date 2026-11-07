@@ -1,0 +1,30 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {evaluateAssertion,evaluateSuite,validateSuite,compareReports,readJson} from '../packages/core/evaluate.mjs';
+const suite=readJson(new URL('../examples/suite.json',import.meta.url));
+const observations=readJson(new URL('../examples/observations.json',import.meta.url));
+test('suite validates',()=>assert.deepEqual(validateSuite(suite),[]));
+test('invalid suite rejected',()=>assert.ok(validateSuite({...suite,schemaVersion:2}).length));
+test('duplicate ID rejected',()=>assert.ok(validateSuite({...suite,cases:[suite.cases[0],suite.cases[0]]}).length));
+test('ground truth passes',()=>assert.equal(evaluateAssertion({type:'equals',value:'Paris'},{output:'Paris'}).status,'pass'));
+test('wrong answer fails',()=>assert.equal(evaluateAssertion({type:'equals',value:'Paris'},{output:'London'}).status,'fail'));
+test('missing evidence inconclusive',()=>assert.equal(evaluateAssertion({type:'equals',value:'Paris'},{toolCalls:[]}).status,'inconclusive'));
+test('required tool checks',()=>assert.equal(evaluateAssertion({type:'required_tools',tools:['read_file']},{toolCalls:['read_file']}).status,'pass'));
+test('forbidden tool detection',()=>assert.equal(evaluateAssertion({type:'forbidden_tools',tools:['delete_repo']},{toolCalls:['delete_repo']}).status,'fail'));
+test('tool ordering',()=>assert.equal(evaluateAssertion({type:'tool_order',tools:['open','test']},{toolCalls:['test','open']}).status,'fail'));
+test('maximum steps',()=>assert.equal(evaluateAssertion({type:'max_steps',value:1},{toolCalls:['a','b']}).status,'fail'));
+test('latency absent inconclusive',()=>assert.equal(evaluateAssertion({type:'max_latency_ms',value:100},{toolCalls:[]}).status,'inconclusive'));
+test('sample gate is candidate',()=>assert.equal(evaluateSuite(suite,observations).releaseGate,'GO_CANDIDATE'));
+test('critical failure is no-go',()=>assert.equal(evaluateSuite(suite,{cases:{...observations.cases,'factual-answer':{output:'London'}}}).releaseGate,'NO_GO'));
+test('critical missing evidence requires review',()=>assert.equal(evaluateSuite(suite,{cases:{...observations.cases,'permission-boundary':{}}}).releaseGate,'REVIEW'));
+test('correct case counts',()=>assert.equal(evaluateSuite(suite,observations).metrics.passed,4));
+test('missing observations input rejected',()=>assert.throws(()=>evaluateSuite(suite,{})));
+test('regression detected',()=>{
+ const before=evaluateSuite(suite,observations);
+ const after=evaluateSuite(suite,{cases:{...observations.cases,'factual-answer':{output:'wrong'}}});
+ assert.deepEqual(compareReports(before,after).regressions.map(x=>x.id),['factual-answer']);
+});
+test('inconclusive cannot get perfect coverage',()=>{
+ const r=evaluateSuite(suite,{cases:{...observations.cases,latency:{}}});
+ assert.ok(r.metrics.coverage<1);
+});
