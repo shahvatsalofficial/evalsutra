@@ -1,6 +1,6 @@
 {
   "name": "evalsutra",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Evidence-first agent evaluation skill for Claude Code; offline evaluator CLI is separate",
   "author": {
     "name": "Vatsal Shah"

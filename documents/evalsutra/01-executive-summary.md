@@ -39,7 +39,7 @@ Teams ship AI agents and judge them by reading the agent's own words. An agent t
 
 ## Current maturity
 
-Version 0.3.0 is an early release (0.x). The evaluator, reports, installer, trace analysis, repro capsule and self-audit are implemented and tested. Live agent execution, sandboxing, a server, a dashboard and third-party integrations are **planned**. See [Roadmap and status](13-roadmap-and-status.md).
+Version 0.3.1 is an early release (0.x). The evaluator, reports, installer, trace analysis, repro capsule and self-audit are implemented and tested. Live agent execution, sandboxing, a server, a dashboard and third-party integrations are **planned**. See [Roadmap and status](13-roadmap-and-status.md).
 
 ## Who should read what
 

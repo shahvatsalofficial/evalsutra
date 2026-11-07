@@ -1,10 +1,10 @@
 {
-  "version": "0.3.0",
+  "version": "0.3.1",
   "node": "v24.15.0",
   "platform": "win32",
   "exitCode": 0,
-  "tests": 55,
-  "pass": 54,
+  "tests": 57,
+  "pass": 56,
   "fail": 0,
   "skipped": 1,
   "cancelled": 0

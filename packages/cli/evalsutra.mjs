@@ -11,7 +11,8 @@ import { install, uninstall, listSkills, ROOT, IDE_DIRS } from './install.mjs';
 export const VERSION = readJson(join(ROOT, 'package.json')).version;
 // Exit codes: 0 ok, 1 usage/runtime error, 2 NO_GO/regression/FAIL, 3 REVIEW/INCONCLUSIVE, 4 invalid evidence.
 const HELP = {
-  _: `EvalSutra AI ${VERSION} — offline, keyless agent evaluation\n\nCommands:\n  doctor | init | validate | run | compare | report | gate\n  install | uninstall | list-skills | matrix | trace | repro | audit\n\nRun "evalsutra <command> --help". Global: --json`,
+  _: `EvalSutra AI ${VERSION} — offline, keyless agent evaluation\n\nCommands:\n  demo | doctor | init | validate | run | compare | report | gate\n  install | uninstall | list-skills | matrix | trace | repro | audit\n\nRun "evalsutra <command> --help". Global: --json`,
+  demo: 'demo [--bad] [--out dir]  Run the bundled demo suite on bundled synthetic observations (works from any folder). --bad uses failing evidence (exit 2).',
   doctor: 'doctor [--json]  Print environment and capability facts.',
   init: 'init [--dir path]  Write a starter suite and observations (never overwrites).',
   validate: 'validate --suite path',
@@ -29,6 +30,11 @@ const HELP = {
 };
 
 const args = process.argv.slice(2);
+// "demo" = run the bundled suite on bundled observations, so it works from any folder (npx, npm i -g, clone).
+if (args[0] === 'demo' && !args.includes('--help')) {
+  const obs = args.includes('--bad') ? 'examples/demo-observations-bad.json' : 'examples/demo-observations.json';
+  args.splice(0, 1, 'run', '--suite', join(ROOT, 'suites/demo.json'), '--observations', join(ROOT, obs), ...(args.includes('--out') ? [] : ['--out', 'artifacts/demo']));
+}
 const command = args[0];
 const flag = n => args.includes('--' + n);
 const arg = (n, d) => { const i = args.indexOf('--' + n); return i >= 0 && args[i + 1] !== undefined ? args[i + 1] : d; };

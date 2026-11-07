@@ -44,15 +44,16 @@ footer{max-width:72rem;margin:0 auto;padding:1.5rem 1.25rem 3rem;color:var(--mut
 <div class="tablewrap"><table><thead><tr><th>Job</th><th>Matrix</th><th>Steps</th></tr></thead><tbody><tr><td><code>tests</code></td><td>Ubuntu, Windows, macOS × Node 20, 22, 24</td><td><code>npm test</code>, <code>npm run validate</code>, <code>npm run doctor</code>, <code>audit</code>, docs freshness check</td></tr></tbody></table></div>
 <p>No secrets are used. No network is needed by the tests. A failing job blocks nothing automatically unless branch protection requires it; enable branch protection with the <code>tests</code> checks required.</p>
 <h2 id="lessons-recorded">Lessons recorded</h2>
-<div class="tablewrap"><table><thead><tr><th>Incident</th><th>Cause</th><th>Fix</th></tr></thead><tbody><tr><td>Windows + Node 20 job failed with <code>Could not find ...tests\*.test.mjs</code></td><td>PowerShell does not expand globs and Node 20 does not either</td><td><code>npm test</code> now runs <code>node --test</code>, which discovers files itself</td></tr></tbody></table></div>
+<div class="tablewrap"><table><thead><tr><th>Incident</th><th>Cause</th><th>Fix</th></tr></thead><tbody><tr><td>0.3.0 npm package: README demo failed outside a clone; audit L4 failed</td><td>demo used repo-relative paths; CONTRIBUTING.md and CODE_OF_CONDUCT.md not in <code>files</code></td><td>added <code>demo</code> command; added files; tests assert both</td></tr><tr><td>Windows + Node 20 job failed with <code>Could not find ...tests\*.test.mjs</code></td><td>PowerShell does not expand globs and Node 20 does not either</td><td><code>npm test</code> now runs <code>node --test</code>, which discovers files itself</td></tr></tbody></table></div>
 <h2 id="release-checklist">Release checklist</h2>
 <ol><li><code>npm test</code> green locally.</li><li><code>node packages/cli/evalsutra.mjs audit</code> is <code>PASS</code>.</li><li><code>node scripts/build-docs.mjs</code> and <code>node scripts/build-evidence.mjs</code> re-run; commit results.</li><li>Update <code>CHANGELOG.md</code>, <code>package.json</code> version, <code>.claude-plugin/plugin.json</code> version, <code>CITATION.cff</code>.</li><li>Push; wait for all CI jobs green.</li><li>Tag: <code>git tag vX.Y.Z &amp;&amp; git push origin vX.Y.Z</code>.</li><li><code>gh release create vX.Y.Z --notes-file ...</code>.</li><li>Optional npm publish (maintainer&#39;s account, see below).</li></ol>
 <h2 id="npm-publish-maintainer-action">npm publish (maintainer action)</h2>
-<p>The package name <code>evalsutra</code> is set in <code>package.json</code>. Availability on npm was not verified. Do not publish before checking <code>npm view evalsutra</code>. Publishing needs the maintainer&#39;s own npm login with two-factor authentication.</p>
-<pre><code>npm view evalsutra          # expect E404 if the name is free
-npm pack --dry-run          # inspect the file list
-npm publish --access public</code></pre>
-<p>Prefer npm <strong>trusted publishing</strong> from GitHub Actions (OIDC, provenance) over a long-lived token once the first version exists.</p>
+<p>Published as <a href="https://www.npmjs.com/package/evalsutra"><code>evalsutra</code></a> from the maintainer&#39;s own npm account. Publishing needs that account&#39;s login and two-factor code, so it is always a maintainer step.</p>
+<pre><code>npm test &amp;&amp; node packages/cli/evalsutra.mjs audit   # must be green
+npm pack --dry-run                                  # inspect the file list
+npm publish --access public
+npx -y evalsutra@X.Y.Z doctor                       # verify from a clean folder</code></pre>
+<p>Verify the published tarball, not just the repo: a clean-folder run of <code>npx evalsutra demo</code> and <code>npx evalsutra audit</code> found two packaging bugs in 0.3.0 (see Lessons). Prefer npm <strong>trusted publishing</strong> from GitHub Actions (OIDC, provenance) over a long-lived token.</p>
 <h2 id="versioning">Versioning</h2>
 <p>Semantic versioning. 0.x means the CLI and report format may still change; changes are listed in <code>CHANGELOG.md</code>. Report <code>schemaVersion</code> changes are called out explicitly.</p>
 <h2 id="hardening-backlog">Hardening backlog</h2>

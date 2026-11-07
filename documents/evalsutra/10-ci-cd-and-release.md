@@ -14,6 +14,7 @@ No secrets are used. No network is needed by the tests. A failing job blocks not
 
 | Incident | Cause | Fix |
 |---|---|---|
+| 0.3.0 npm package: README demo failed outside a clone; audit L4 failed | demo used repo-relative paths; CONTRIBUTING.md and CODE_OF_CONDUCT.md not in `files` | added `demo` command; added files; tests assert both |
 | Windows + Node 20 job failed with `Could not find ...tests\*.test.mjs` | PowerShell does not expand globs and Node 20 does not either | `npm test` now runs `node --test`, which discovers files itself |
 
 ## Release checklist
@@ -29,15 +30,16 @@ No secrets are used. No network is needed by the tests. A failing job blocks not
 
 ## npm publish (maintainer action)
 
-The package name `evalsutra` is set in `package.json`. Availability on npm was not verified. Do not publish before checking `npm view evalsutra`. Publishing needs the maintainer's own npm login with two-factor authentication.
+Published as [`evalsutra`](https://www.npmjs.com/package/evalsutra) from the maintainer's own npm account. Publishing needs that account's login and two-factor code, so it is always a maintainer step.
 
 ```bash
-npm view evalsutra          # expect E404 if the name is free
-npm pack --dry-run          # inspect the file list
+npm test && node packages/cli/evalsutra.mjs audit   # must be green
+npm pack --dry-run                                  # inspect the file list
 npm publish --access public
+npx -y evalsutra@X.Y.Z doctor                       # verify from a clean folder
 ```
 
-Prefer npm **trusted publishing** from GitHub Actions (OIDC, provenance) over a long-lived token once the first version exists.
+Verify the published tarball, not just the repo: a clean-folder run of `npx evalsutra demo` and `npx evalsutra audit` found two packaging bugs in 0.3.0 (see Lessons). Prefer npm **trusted publishing** from GitHub Actions (OIDC, provenance) over a long-lived token.
 
 ## Versioning
 

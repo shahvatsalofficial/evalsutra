@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "tool": "evalsutra@0.3.0",
+  "tool": "evalsutra@0.3.1",
   "node": "v24.15.0",
   "platform": "win32",
   "scope": "Self-audit of the EvalSutra package files. It audits the tool, not any third-party agent.",

@@ -8,7 +8,7 @@
     "source": "supplied local JSON observations",
     "suiteDigest": "0294091e9fbba23c63d11d4c3b37f30126471c5f6f5f382760a6f39acb0b64fe",
     "observationsDigest": "c69a7a0788ab8499bdbbf71082aa1208c158cfa9e9ea2eb7f10712f0804d925b",
-    "tool": "evalsutra@0.3.0",
+    "tool": "evalsutra@0.3.1",
     "node": "v24.15.0",
     "platform": "win32"
   },

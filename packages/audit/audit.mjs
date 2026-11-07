@@ -164,7 +164,7 @@ const mdCell = s => String(s).replace(/\|/g, '\\|').replace(/\r?\n/g, ' ');
 export function auditMarkdown(a) {
   const rows = a.checks.map(c => `| ${c.id} | ${c.category} | ${mdCell(c.title)} | ${mdCell(c.expected)} | ${mdCell(c.observed)} | ${c.status.toUpperCase()} |`).join('\n');
   const cats = a.categories.map(c => `| ${c.category} | ${c.passed}/${c.total} |`).join('\n');
-  return `# EvalSutra self-audit report\n\n**Verdict: ${a.verdict}** — ${a.passed}/${a.total} checks passed, ${a.failed} failed.  \nTool: \`${a.tool}\` · Node ${a.node} · ${a.platform}\n\n> ${a.scope}\n\n## Summary by category\n\n| Category | Passed |\n|---|---|\n${cats}\n\n## All checks\n\n| ID | Category | Check | Expected | Observed | Result |\n|---|---|---|---|---|---|\n${rows}\n\n## Limits of this audit\n\n${a.limits.map(l => `- ${l}`).join('\n')}\n\n## Reproduce\n\n\`\`\`bash\nnpx github:shahvatsalofficial/evalsutra audit --out audit\n\`\`\`\n`;
+  return `# EvalSutra self-audit report\n\n**Verdict: ${a.verdict}** — ${a.passed}/${a.total} checks passed, ${a.failed} failed.  \nTool: \`${a.tool}\` · Node ${a.node} · ${a.platform}\n\n> ${a.scope}\n\n## Summary by category\n\n| Category | Passed |\n|---|---|\n${cats}\n\n## All checks\n\n| ID | Category | Check | Expected | Observed | Result |\n|---|---|---|---|---|---|\n${rows}\n\n## Limits of this audit\n\n${a.limits.map(l => `- ${l}`).join('\n')}\n\n## Reproduce\n\n\`\`\`bash\nnpx evalsutra audit --out audit\n\`\`\`\n`;
 }
 
 export function auditHtml(a) {
@@ -174,6 +174,6 @@ export function auditHtml(a) {
 <h2>Summary by category</h2><div class="grid">${cats}</div>
 <h2>All checks</h2><div class="tablewrap"><table><caption>Every check with expected and observed value. Result is text plus symbol.</caption><thead><tr><th>ID</th><th>Category</th><th>Check</th><th>Expected</th><th>Observed</th><th>Result</th></tr></thead><tbody>${rows}</tbody></table></div>
 <h2>Limits of this audit</h2><ul>${a.limits.map(l => `<li>${esc(l)}</li>`).join('')}</ul>
-<h2>Reproduce</h2><pre><code>npx github:shahvatsalofficial/evalsutra audit --out audit</code></pre>`;
+<h2>Reproduce</h2><pre><code>npx evalsutra audit --out audit</code></pre>`;
   return page({ title: 'EvalSutra self-audit report', description: 'Machine-generated self-audit of EvalSutra: grader accuracy, reproducibility, security and legal checks.', body });
 }

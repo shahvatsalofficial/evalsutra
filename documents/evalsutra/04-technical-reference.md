@@ -7,8 +7,14 @@ Node.js 20 or newer. Tested on Node 20, 22 and 24 on Ubuntu, Windows and macOS i
 ## Install and run
 
 ```bash
-# no install: run straight from GitHub
+# no install: run from npm
+npx evalsutra doctor
+
+# or straight from GitHub source
 npx github:shahvatsalofficial/evalsutra doctor
+
+# or install globally (your choice)
+npm install -g evalsutra
 
 # from a clone
 git clone https://github.com/shahvatsalofficial/evalsutra.git
@@ -17,7 +23,7 @@ npm test
 node packages/cli/evalsutra.mjs doctor
 ```
 
-An npm package named `evalsutra` is configured but **not yet published**. Until it is, use the GitHub form above.
+Published on npm as [`evalsutra`](https://www.npmjs.com/package/evalsutra) (Apache-2.0, zero dependencies). The GitHub form always tracks the latest commit.
 
 ## Exit codes
 
@@ -33,6 +39,7 @@ An npm package named `evalsutra` is configured but **not yet published**. Until 
 
 | Command | Purpose |
 |---|---|
+| `demo [--bad] [--out d]` | run the bundled demo suite on bundled synthetic data from any folder; `--bad` gives exit 2 |
 | `doctor` | environment facts as JSON; states `liveAgentExecution: false` |
 | `init [--dir d]` | write starter `suite.json` and `observations.json`; refuses to overwrite |
 | `validate --suite s` | check a suite; exit 4 on errors |
@@ -117,8 +124,8 @@ Digests use key-sorted JSON, so reordering keys does not change them. [R2, R3]
 ## Use in CI
 
 ```yaml
-- run: npx github:shahvatsalofficial/evalsutra run --suite suites/mine.json --observations out/obs.json --out out/eval
-- run: npx github:shahvatsalofficial/evalsutra gate --report out/eval/report.json --policy policies/default.json
+- run: npx evalsutra run --suite suites/mine.json --observations out/obs.json --out out/eval
+- run: npx evalsutra gate --report out/eval/report.json --policy policies/default.json
 - uses: actions/upload-artifact@v4
   with: { name: evalsutra-report, path: out/eval }
 ```

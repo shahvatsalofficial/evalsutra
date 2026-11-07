@@ -2,7 +2,7 @@
 
 Legend: **Done** = implemented and tested. **Planned** = not implemented. Nothing marked planned should be described to users as available.
 
-## Status matrix (v0.3.0)
+## Status matrix (v0.3.1)
 
 | Capability | Status |
 |---|---|
@@ -28,7 +28,7 @@ Legend: **Done** = implemented and tested. **Planned** = not implemented. Nothin
 | Property-based and fuzz tests | Planned |
 | Server API and accessible dashboard | Planned |
 | Verified live skill discovery in each IDE | Planned |
-| npm publication | Pending maintainer action |
+| npm publication | Done (`evalsutra` on npm); trusted publishing and provenance planned |
 | Signed releases, SBOM, Scorecard | Planned |
 
 ## Next milestones

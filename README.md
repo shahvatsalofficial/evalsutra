@@ -4,6 +4,7 @@
 *Test Intelligence. Measure Truth. Build Trust.*
 
 [![CI](https://github.com/shahvatsalofficial/evalsutra/actions/workflows/ci.yml/badge.svg)](https://github.com/shahvatsalofficial/evalsutra/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/evalsutra.svg)](https://www.npmjs.com/package/evalsutra)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](package.json)
 [![Dependencies: 0](https://img.shields.io/badge/dependencies-0-success.svg)](THIRD_PARTY_NOTICES.md)
@@ -21,13 +22,13 @@ An agent that writes "Done, all tests pass" may have run no tests. Reading prose
 ## 30-second demo (no key, no install)
 
 ```bash
-npx github:shahvatsalofficial/evalsutra run \
+npx evalsutra run \
   --suite suites/demo.json \
   --observations examples/demo-observations-bad.json \
   --out artifacts/bad
 ```
 
-Real output from the bundled synthetic data (exit code 2):
+Real output (exit code 2):
 
 ```text
 {
@@ -78,7 +79,7 @@ Re-create everything yourself: `npm test`, `node packages/cli/evalsutra.mjs audi
 ## Commands
 
 ```text
-evalsutra doctor | init | validate | run | compare | report | gate
+evalsutra demo | doctor | init | validate | run | compare | report | gate
 evalsutra trace analyze | repro export | repro verify | audit
 evalsutra install | uninstall | list-skills | matrix
 ```
@@ -88,8 +89,8 @@ Every command has `--help`. Exit codes: `0` ok, `1` error, `2` NO_GO / regressio
 ## Install the skills in your editor
 
 ```bash
-npx github:shahvatsalofficial/evalsutra install --ide claude --project . --dry-run
-npx github:shahvatsalofficial/evalsutra install --ide claude --project .
+npx evalsutra install --ide claude --project . --dry-run
+npx evalsutra install --ide claude --project .
 ```
 
 Choose `claude`, `cursor`, `codex`, `gemini` or `copilot`. It writes only inside your project, never overwrites, refuses symlink escapes, and `uninstall` keeps files you edited. Only the file copy is tested; whether your editor version discovers the skills is **not verified**. Run `evalsutra matrix`.
@@ -133,9 +134,9 @@ Everything is in [`documents/evalsutra/`](documents/evalsutra/) as Markdown with
 
 ## Status
 
-**Implemented and tested (v0.3.0):** offline evaluator, statuses and gates, comparison, trace analysis, reports, repro capsule, installer, 18 skills, self-audit, documentation set.
+**Implemented and tested (v0.3.1):** offline evaluator, statuses and gates, comparison, trace analysis, reports, repro capsule, installer, 18 skills, self-audit, documentation set.
 
-**Not implemented:** live agent runner, sandbox, server, dashboard, SARIF, OpenTelemetry, Promptfoo / Inspect AI / Harbor / MCP Inspector adapters, calibrated LLM judge, `audit-plugin`, JSON Schema files, npm publication.
+**Not implemented:** live agent runner, sandbox, server, dashboard, SARIF, OpenTelemetry, Promptfoo / Inspect AI / Harbor / MCP Inspector adapters, calibrated LLM judge, `audit-plugin`, JSON Schema files.
 
 **Unverified:** skill discovery inside live Cursor, Codex, Gemini CLI and Copilot; Linux and macOS results other than the public CI history.
 

@@ -1,7 +1,7 @@
 # EvalSutra self-audit report
 
 **Verdict: PASS** — 29/29 checks passed, 0 failed.  
-Tool: `evalsutra@0.3.0` · Node v24.15.0 · win32
+Tool: `evalsutra@0.3.1` · Node v24.15.0 · win32
 
 > Self-audit of the EvalSutra package files. It audits the tool, not any third-party agent.
 
@@ -60,5 +60,5 @@ Tool: `evalsutra@0.3.0` · Node v24.15.0 · win32
 ## Reproduce
 
 ```bash
-npx github:shahvatsalofficial/evalsutra audit --out audit
+npx evalsutra audit --out audit
 ```

@@ -71,7 +71,7 @@ Add an assertion type in `evaluate.mjs` (validate, evaluate, test, audit row). A
 
 ## Deployment topology
 
-A single Node process on the user's machine or CI runner. Distribution: GitHub source (`npx github:shahvatsalofficial/evalsutra`), and npm once the maintainer publishes. Nothing is hosted.
+A single Node process on the user's machine or CI runner. Distribution: npm (`npx evalsutra`) and GitHub source (`npx github:shahvatsalofficial/evalsutra`). Nothing is hosted.
 
 ## Observability
 

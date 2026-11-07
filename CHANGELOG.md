@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.1 (2026-11-07)
+- Fixed: published 0.3.0 package failed audit check L4 (CONTRIBUTING.md and CODE_OF_CONDUCT.md were missing from `files`); SUPPORT.md also added.
+- Added `evalsutra demo [--bad]`: runs the bundled demo from any folder. README quick start used repo-relative paths that failed under npx.
+- Docs, README, llms.txt now use `npx evalsutra` (npm package published as 0.3.0).
+- Tests: demo from a foreign working directory; package `files` completeness.
+
 ## 0.3.0 (2026-11-07)
 - Added `evalsutra audit`: 29-check self-audit with Markdown, HTML and JSON reports (grader accuracy on 36 known answers, evidence rules, reproducibility, security, skills, legal).
 - Reports now use a shared accessible design system (light/dark, no script, status as text plus symbol); HTML report shows provenance and confidence interval.

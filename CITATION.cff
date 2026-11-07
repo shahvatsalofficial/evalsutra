@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use EvalSutra AI, please cite it as below."
 title: "EvalSutra AI: The Agent Evaluation & Reliability Intelligence Platform"
 type: software
-version: 0.3.0
+version: 0.3.1
 date-released: 2026-11-07
 license: Apache-2.0
 repository-code: "https://github.com/shahvatsalofficial/evalsutra"

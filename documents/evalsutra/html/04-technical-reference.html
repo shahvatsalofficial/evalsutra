@@ -42,19 +42,25 @@ footer{max-width:72rem;margin:0 auto;padding:1.5rem 1.25rem 3rem;color:var(--mut
 <h2 id="requirements">Requirements</h2>
 <p>Node.js 20 or newer. Tested on Node 20, 22 and 24 on Ubuntu, Windows and macOS in GitHub Actions.</p>
 <h2 id="install-and-run">Install and run</h2>
-<pre><code># no install: run straight from GitHub
+<pre><code># no install: run from npm
+npx evalsutra doctor
+
+# or straight from GitHub source
 npx github:shahvatsalofficial/evalsutra doctor
+
+# or install globally (your choice)
+npm install -g evalsutra
 
 # from a clone
 git clone https://github.com/shahvatsalofficial/evalsutra.git
 cd evalsutra
 npm test
 node packages/cli/evalsutra.mjs doctor</code></pre>
-<p>An npm package named <code>evalsutra</code> is configured but <strong>not yet published</strong>. Until it is, use the GitHub form above.</p>
+<p>Published on npm as <a href="https://www.npmjs.com/package/evalsutra"><code>evalsutra</code></a> (Apache-2.0, zero dependencies). The GitHub form always tracks the latest commit.</p>
 <h2 id="exit-codes">Exit codes</h2>
 <div class="tablewrap"><table><thead><tr><th>Code</th><th>Meaning</th></tr></thead><tbody><tr><td>0</td><td>success, <code>GO_CANDIDATE</code>, compare <code>PASS</code>, audit <code>PASS</code></td></tr><tr><td>1</td><td>usage or runtime error (bad flag, unreadable file, refused overwrite)</td></tr><tr><td>2</td><td><code>NO_GO</code>, regression, trace failure, audit <code>FAIL</code></td></tr><tr><td>3</td><td><code>REVIEW</code>, compare <code>INCONCLUSIVE</code>, trace inconclusive</td></tr><tr><td>4</td><td>invalid evidence: bad suite, bad observations, capsule hash mismatch</td></tr></tbody></table></div>
 <h2 id="commands">Commands</h2>
-<div class="tablewrap"><table><thead><tr><th>Command</th><th>Purpose</th></tr></thead><tbody><tr><td><code>doctor</code></td><td>environment facts as JSON; states <code>liveAgentExecution: false</code></td></tr><tr><td><code>init [--dir d]</code></td><td>write starter <code>suite.json</code> and <code>observations.json</code>; refuses to overwrite</td></tr><tr><td><code>validate --suite s</code></td><td>check a suite; exit 4 on errors</td></tr><tr><td><code>run --suite s --observations o --out d [--runner replay] [--dry-run]</code></td><td>evaluate; write 4 report files</td></tr><tr><td><code>compare --baseline a.json --candidate b.json [--out f]</code></td><td>paired comparison</td></tr><tr><td><code>report --in report.json --format md|html|junit</code></td><td>re-render a report to stdout</td></tr><tr><td><code>gate --report r.json [--policy p.json]</code></td><td>apply a stricter policy</td></tr><tr><td><code>trace analyze --input t.json [--forbid a,b] [--allow a,b]</code></td><td>tool trace findings</td></tr><tr><td><code>repro export --suite s --observations o --report r --out d</code></td><td>build capsule</td></tr><tr><td><code>repro verify dir</code></td><td>check capsule hashes</td></tr><tr><td><code>audit [--out d]</code></td><td>self-audit; writes <code>audit-report.json/.md/.html</code></td></tr><tr><td><code>install --ide x --project p [--skills a,b] [--dry-run]</code></td><td>copy skills (x: claude, cursor, codex, gemini, copilot)</td></tr><tr><td><code>uninstall --ide x --project p [--dry-run]</code></td><td>remove unmodified EvalSutra files</td></tr><tr><td><code>list-skills</code></td><td>print the 18 skill names</td></tr><tr><td><code>matrix</code></td><td>host compatibility matrix: verified vs unknown</td></tr></tbody></table></div>
+<div class="tablewrap"><table><thead><tr><th>Command</th><th>Purpose</th></tr></thead><tbody><tr><td><code>demo [--bad] [--out d]</code></td><td>run the bundled demo suite on bundled synthetic data from any folder; <code>--bad</code> gives exit 2</td></tr><tr><td><code>doctor</code></td><td>environment facts as JSON; states <code>liveAgentExecution: false</code></td></tr><tr><td><code>init [--dir d]</code></td><td>write starter <code>suite.json</code> and <code>observations.json</code>; refuses to overwrite</td></tr><tr><td><code>validate --suite s</code></td><td>check a suite; exit 4 on errors</td></tr><tr><td><code>run --suite s --observations o --out d [--runner replay] [--dry-run]</code></td><td>evaluate; write 4 report files</td></tr><tr><td><code>compare --baseline a.json --candidate b.json [--out f]</code></td><td>paired comparison</td></tr><tr><td><code>report --in report.json --format md|html|junit</code></td><td>re-render a report to stdout</td></tr><tr><td><code>gate --report r.json [--policy p.json]</code></td><td>apply a stricter policy</td></tr><tr><td><code>trace analyze --input t.json [--forbid a,b] [--allow a,b]</code></td><td>tool trace findings</td></tr><tr><td><code>repro export --suite s --observations o --report r --out d</code></td><td>build capsule</td></tr><tr><td><code>repro verify dir</code></td><td>check capsule hashes</td></tr><tr><td><code>audit [--out d]</code></td><td>self-audit; writes <code>audit-report.json/.md/.html</code></td></tr><tr><td><code>install --ide x --project p [--skills a,b] [--dry-run]</code></td><td>copy skills (x: claude, cursor, codex, gemini, copilot)</td></tr><tr><td><code>uninstall --ide x --project p [--dry-run]</code></td><td>remove unmodified EvalSutra files</td></tr><tr><td><code>list-skills</code></td><td>print the 18 skill names</td></tr><tr><td><code>matrix</code></td><td>host compatibility matrix: verified vs unknown</td></tr></tbody></table></div>
 <p>Every command accepts <code>--help</code>. <code>--runner</code> other than <code>replay</code> returns exit 1 with <code>not_supported</code>.</p>
 <h2 id="suite-format">Suite format</h2>
 <pre><code>{
@@ -89,8 +95,8 @@ node packages/cli/evalsutra.mjs doctor</code></pre>
 <h2 id="policy-file-gate-policy">Policy file (<code>gate --policy</code>)</h2>
 <pre><code>{ &quot;minPassRate&quot;: 0.9, &quot;minCoverage&quot;: 0.9, &quot;maxInconclusive&quot;: 0 }</code></pre>
 <h2 id="use-in-ci">Use in CI</h2>
-<pre><code>- run: npx github:shahvatsalofficial/evalsutra run --suite suites/mine.json --observations out/obs.json --out out/eval
-- run: npx github:shahvatsalofficial/evalsutra gate --report out/eval/report.json --policy policies/default.json
+<pre><code>- run: npx evalsutra run --suite suites/mine.json --observations out/obs.json --out out/eval
+- run: npx evalsutra gate --report out/eval/report.json --policy policies/default.json
 - uses: actions/upload-artifact@v4
   with: { name: evalsutra-report, path: out/eval }</code></pre>
 <p>A non-zero exit fails the job. Exit 3 (<code>REVIEW</code>) is also non-zero, so missing evidence blocks the build.</p>

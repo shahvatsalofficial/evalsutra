@@ -92,3 +92,16 @@ test('docs: every relative link and anchor resolves', () => {
     }
   }
 });
+
+test('demo command works from any working directory and honors --bad', () => {
+  const cwd = mkdtempSync(join(tmpdir(), 'es-cwd-'));
+  const cli = join(root, 'packages/cli/evalsutra.mjs');
+  const ok = spawnSync(process.execPath, [cli, 'demo'], { encoding: 'utf8', cwd });
+  assert.equal(ok.status, 0, ok.stderr);
+  assert.ok(existsSync(join(cwd, 'artifacts/demo/report.html')));
+  assert.equal(spawnSync(process.execPath, [cli, 'demo', '--bad', '--out', join(cwd, 'b')], { encoding: 'utf8', cwd }).status, 2);
+});
+test('package.json files list ships everything the audit requires', () => {
+  const files = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).files;
+  for (const f of ['LICENSE', 'NOTICE', 'THIRD_PARTY_NOTICES.md', 'SECURITY.md', 'CONTRIBUTING.md', 'CODE_OF_CONDUCT.md', 'CHANGELOG.md', 'suites', 'examples', 'skills', '.agents', 'packages']) assert.ok(files.includes(f), f);
+});

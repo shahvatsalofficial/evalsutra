@@ -20,7 +20,7 @@
 
 **How do I add my own check?** See [Contributor handbook](12-contributor-handbook.md).
 
-**Is it on npm?** Not yet. Use `npx github:shahvatsalofficial/evalsutra`.
+**Is it on npm?** Yes: `npx evalsutra` (package `evalsutra`). The GitHub form `npx github:shahvatsalofficial/evalsutra` also works.
 
 **How do I know the samples are not faked?** Every sample file is produced by `scripts/build-evidence.mjs` from the shipped CLI. Re-run it and diff.
 

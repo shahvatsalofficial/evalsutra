@@ -3,17 +3,15 @@
 ## 1. Five-minute tour
 
 ```bash
-git clone https://github.com/shahvatsalofficial/evalsutra.git
-cd evalsutra
-node packages/cli/evalsutra.mjs run --suite suites/demo.json --observations examples/demo-observations.json --out artifacts/demo
+npx evalsutra demo
 ```
 
-You get `artifacts/demo/report.html` (open in a browser), `report.md`, `report.json`, `junit.xml`. The gate is `GO_CANDIDATE` because the sample evidence is clean.
+You get `artifacts/demo/report.html` (in the folder where you ran it) (open in a browser), `report.md`, `report.json`, `junit.xml`. The gate is `GO_CANDIDATE` because the sample evidence is clean.
 
 Now the failing sample:
 
 ```bash
-node packages/cli/evalsutra.mjs run --suite suites/demo.json --observations examples/demo-observations-bad.json --out artifacts/bad
+npx evalsutra demo --bad
 ```
 
 Exit code is 2 and the gate is `NO_GO`: the agent used a forbidden tool and leaked a canary value. One more case had no latency, so it is `inconclusive` rather than guessed.
@@ -93,4 +91,4 @@ See [Technical reference](04-technical-reference.md#use-in-ci).
 | `Unsupported --ide` | typo | use claude, cursor, codex, gemini or copilot |
 | `runner "x" is not_supported` | only replay exists | use `--runner replay` |
 | Gate stays `REVIEW` | an inconclusive case | add the missing observation field |
-| `npx` cannot find command | package not on npm yet | use `npx github:shahvatsalofficial/evalsutra` |
+| `npx` cannot find command | package not on npm yet | use `npx evalsutra` |

@@ -18,7 +18,7 @@ EvalSutra grades recorded agent observations (output, tool calls, latency) with 
 - [Roadmap and status](documents/evalsutra/13-roadmap-and-status.md)
 
 ## Quick start
-npx github:shahvatsalofficial/evalsutra run --suite suites/demo.json --observations examples/demo-observations.json --out artifacts/demo
+npx evalsutra run --suite suites/demo.json --observations examples/demo-observations.json --out artifacts/demo
 
 ## Optional
 - [Changelog](CHANGELOG.md)
