@@ -1,0 +1,317 @@
+{
+  "schemaVersion": 1,
+  "tool": "evalsutra@0.3.0",
+  "node": "v24.15.0",
+  "platform": "win32",
+  "scope": "Self-audit of the EvalSutra package files. It audits the tool, not any third-party agent.",
+  "limits": [
+    "Runs in-process with the code it audits, so it is a regression and integrity check, not an independent third-party attestation.",
+    "Known-answer table is finite; it proves listed behaviours only.",
+    "Does not test live IDEs, live models or other operating systems; see CI for OS results."
+  ],
+  "knownAnswerCases": 36,
+  "total": 29,
+  "passed": 29,
+  "failed": 0,
+  "verdict": "PASS",
+  "categories": [
+    {
+      "category": "Grader accuracy",
+      "passed": 3,
+      "total": 3
+    },
+    {
+      "category": "Evidence rules",
+      "passed": 7,
+      "total": 7
+    },
+    {
+      "category": "Reproducibility",
+      "passed": 3,
+      "total": 3
+    },
+    {
+      "category": "Trace analysis",
+      "passed": 2,
+      "total": 2
+    },
+    {
+      "category": "Security",
+      "passed": 6,
+      "total": 6
+    },
+    {
+      "category": "Skills",
+      "passed": 4,
+      "total": 4
+    },
+    {
+      "category": "Legal",
+      "passed": 4,
+      "total": 4
+    }
+  ],
+  "checks": [
+    {
+      "category": "Grader accuracy",
+      "id": "G1",
+      "title": "Known-answer table (36 cases)",
+      "expected": "0 wrong",
+      "observed": "0 wrong",
+      "status": "pass",
+      "evidence": "all rows matched ground truth"
+    },
+    {
+      "category": "Grader accuracy",
+      "id": "G2",
+      "title": "False positives (graded pass, truth not pass)",
+      "expected": "0",
+      "observed": "0",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Grader accuracy",
+      "id": "G3",
+      "title": "False negatives (graded not-pass, truth pass)",
+      "expected": "0",
+      "observed": "0",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Evidence rules",
+      "id": "E1",
+      "title": "No observations at all must never pass",
+      "expected": "REVIEW, passRate null, coverage 0",
+      "observed": "REVIEW, null, 0",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Evidence rules",
+      "id": "E2",
+      "title": "Model-judge-only evidence cannot reach GO_CANDIDATE",
+      "expected": "not GO_CANDIDATE",
+      "observed": "REVIEW",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Evidence rules",
+      "id": "E3",
+      "title": "All-skipped suite must not pass",
+      "expected": "not GO_CANDIDATE, 0 passed",
+      "observed": "REVIEW, 0 passed",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Evidence rules",
+      "id": "E4",
+      "title": "Forbidden tool + canary leak is NO_GO with a critical failure",
+      "expected": "NO_GO, 1 critical",
+      "observed": "NO_GO, 1 critical",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Evidence rules",
+      "id": "E5",
+      "title": "Clean demo evidence is GO_CANDIDATE (and only a candidate)",
+      "expected": "GO_CANDIDATE",
+      "observed": "GO_CANDIDATE",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Evidence rules",
+      "id": "E6",
+      "title": "Regression between good and bad run is detected",
+      "expected": "verdict FAIL",
+      "observed": "FAIL",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Evidence rules",
+      "id": "E7",
+      "title": "Case id \"constructor\" does not read inherited object members",
+      "expected": "inconclusive",
+      "observed": "inconclusive",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Reproducibility",
+      "id": "R1",
+      "title": "Same inputs give byte-identical results",
+      "expected": "equal",
+      "observed": "equal",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Reproducibility",
+      "id": "R2",
+      "title": "Input digest ignores JSON key order",
+      "expected": "equal",
+      "observed": "equal",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Reproducibility",
+      "id": "R3",
+      "title": "Changing one value changes the digest",
+      "expected": "different",
+      "observed": "different",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Trace analysis",
+      "id": "T1",
+      "title": "Success claim after failed last tool is flagged",
+      "expected": "UNSUPPORTED_SUCCESS_CLAIM",
+      "observed": "UNSUPPORTED_SUCCESS_CLAIM",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Trace analysis",
+      "id": "T2",
+      "title": "Empty trace is inconclusive, never pass",
+      "expected": "inconclusive",
+      "observed": "inconclusive",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Security",
+      "id": "S1",
+      "title": "Report HTML/XML escape hostile suite names",
+      "expected": "no raw <img",
+      "observed": "escaped",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Security",
+      "id": "S2",
+      "title": "Shell metacharacters in fixtures are inert data",
+      "expected": "valid, nothing executed",
+      "observed": "valid",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Security",
+      "id": "S3",
+      "title": "Secret scan over 136 text files",
+      "expected": "0 files with credential patterns",
+      "observed": "0",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Security",
+      "id": "S4",
+      "title": "No network/process/dynamic-code APIs in 10 source files",
+      "expected": "0 hits",
+      "observed": "0",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Security",
+      "id": "S5",
+      "title": "Zero runtime dependencies (no supply-chain surface)",
+      "expected": "0",
+      "observed": "0",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Security",
+      "id": "S6",
+      "title": "No install-time lifecycle scripts",
+      "expected": "0",
+      "observed": "0",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Skills",
+      "id": "K1",
+      "title": "Eighteen specialist skills present",
+      "expected": "18",
+      "observed": "18",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Skills",
+      "id": "K2",
+      "title": "Valid frontmatter (name matches folder, description present)",
+      "expected": "0 invalid",
+      "observed": "0",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Skills",
+      "id": "K3",
+      "title": "Every skill states objective, procedure, contract and stop conditions",
+      "expected": "0 missing",
+      "observed": "0",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Skills",
+      "id": "K4",
+      "title": "Plugin copy equals canonical copy",
+      "expected": "0 drift",
+      "observed": "0",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Legal",
+      "id": "L1",
+      "title": "Apache-2.0 LICENSE text present",
+      "expected": "contains \"Apache License\" and \"Version 2.0\"",
+      "observed": "yes",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Legal",
+      "id": "L2",
+      "title": "package.json license is Apache-2.0",
+      "expected": "Apache-2.0",
+      "observed": "Apache-2.0",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Legal",
+      "id": "L3",
+      "title": "NOTICE and THIRD_PARTY_NOTICES present",
+      "expected": "both exist",
+      "observed": "true/true",
+      "status": "pass",
+      "evidence": ""
+    },
+    {
+      "category": "Legal",
+      "id": "L4",
+      "title": "SECURITY, CONTRIBUTING, CODE_OF_CONDUCT, CHANGELOG present",
+      "expected": "all exist",
+      "observed": "checked",
+      "status": "pass",
+      "evidence": ""
+    }
+  ]
+}

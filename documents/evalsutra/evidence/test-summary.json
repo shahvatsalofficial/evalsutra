@@ -1,0 +1,11 @@
+{
+  "version": "0.3.0",
+  "node": "v24.15.0",
+  "platform": "win32",
+  "exitCode": 0,
+  "tests": 55,
+  "pass": 54,
+  "fail": 0,
+  "skipped": 1,
+  "cancelled": 0
+}

@@ -102,7 +102,7 @@ export function evaluateSuite(suite, observations, provenance = {}) {
   const all = [];
   let totalWeight = 0, scoredWeight = 0, passingWeight = 0;
   for (const item of suite.cases) {
-    const obs = observations.cases[item.id];
+    const obs = Object.hasOwn(observations.cases, item.id) ? observations.cases[item.id] : undefined;
     if (item.skip === true) { all.push({ id: item.id, title: item.title ?? item.id, status: 'skipped', critical: item.critical === true, sourceType: null, assertions: [] }); continue; }
     const sourceType = SOURCE_TYPES.includes(obs?.sourceType) ? obs.sourceType : (obs ? 'unspecified' : null);
     const details = item.assertions.map(a => {

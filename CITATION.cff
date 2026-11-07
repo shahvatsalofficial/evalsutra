@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use EvalSutra AI, please cite it as below."
+title: "EvalSutra AI: The Agent Evaluation & Reliability Intelligence Platform"
+type: software
+version: 0.3.0
+date-released: 2026-11-07
+license: Apache-2.0
+repository-code: "https://github.com/shahvatsalofficial/evalsutra"
+url: "https://github.com/shahvatsalofficial/evalsutra"
+abstract: "Evidence-first, offline, keyless evaluation of AI agents: deterministic graders, honest inconclusive handling, release gates, regression comparison, trace analysis, reproducibility capsules and a self-audit."
+keywords: [ai-agents, agent-evaluation, llm-evals, agent-skills, claude-code, reliability, testing]
+authors:
+  - family-names: Shah
+    given-names: Vatsal

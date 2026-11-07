@@ -11,7 +11,7 @@ import { install, uninstall, listSkills, ROOT, IDE_DIRS } from './install.mjs';
 export const VERSION = readJson(join(ROOT, 'package.json')).version;
 // Exit codes: 0 ok, 1 usage/runtime error, 2 NO_GO/regression/FAIL, 3 REVIEW/INCONCLUSIVE, 4 invalid evidence.
 const HELP = {
-  _: `EvalSutra AI ${VERSION} — offline, keyless agent evaluation\n\nCommands:\n  doctor | init | validate | run | compare | report | gate\n  install | uninstall | list-skills | matrix | trace | repro\n\nRun "evalsutra <command> --help". Global: --json`,
+  _: `EvalSutra AI ${VERSION} — offline, keyless agent evaluation\n\nCommands:\n  doctor | init | validate | run | compare | report | gate\n  install | uninstall | list-skills | matrix | trace | repro | audit\n\nRun "evalsutra <command> --help". Global: --json`,
   doctor: 'doctor [--json]  Print environment and capability facts.',
   init: 'init [--dir path]  Write a starter suite and observations (never overwrites).',
   validate: 'validate --suite path',
@@ -22,6 +22,7 @@ const HELP = {
   install: 'install --ide claude|cursor|codex|gemini|copilot --project path [--skills a,b] [--dry-run]',
   uninstall: 'uninstall --ide ... --project path [--dry-run]  Removes unmodified EvalSutra files only.',
   'list-skills': 'list-skills',
+  audit: 'audit [--out dir]  Independent self-audit of grader accuracy, reproducibility, evidence rules, skills, secrets, licence. Writes audit-report.json/.md/.html.',
   matrix: 'matrix  Host compatibility matrix (verified vs unknown).',
   trace: 'trace analyze --input trace.json [--forbid a,b] [--allow a,b]',
   repro: 'repro export --suite s --observations o --report r --out dir | repro verify dir'
@@ -48,15 +49,13 @@ try {
   else if (command === '--version' || command === '-v') console.log(VERSION);
   else if (flag('help') && HELP[command]) console.log(HELP[command]);
   else if (command === 'doctor') {
-    out({ product: 'EvalSutra AI', version: VERSION, node: process.version, platform: process.platform, scoring: SCORING_VERSION, offlineReplay: true, liveAgentExecution: false, networkCalls: false, gitHubPublished: true, skills: listSkills().length });
+    out({ product: 'EvalSutra AI', version: VERSION, node: process.version, platform: process.platform, scoring: SCORING_VERSION, offlineReplay: true, liveAgentExecution: false, networkCalls: false, skills: listSkills().length });
   } else if (command === 'init') {
     const dir = resolve(arg('dir', '.'));
-    for (const [name, src] of [['suite.json', 'examples/suite.json'], ['observations.json', 'examples/observations.json']]) {
-      const t = join(dir, name);
-      if (existsSync(t)) throw new Error(`Refusing to overwrite ${t}`);
-      mkdirSync(dir, { recursive: true });
-      writeFileSync(t, readFileSync(join(ROOT, src)));
-    }
+    const pairs = [['suite.json', 'suites/demo.json'], ['observations.json', 'examples/demo-observations.json']];
+    for (const [name] of pairs) if (existsSync(join(dir, name))) throw new Error(`Refusing to overwrite ${join(dir, name)}`);
+    mkdirSync(dir, { recursive: true });
+    for (const [name, src] of pairs) writeFileSync(join(dir, name), readFileSync(join(ROOT, src)));
     console.log(`Wrote suite.json and observations.json to ${dir}`);
   } else if (command === 'validate') {
     const suite = readJson(resolve(arg('suite', 'examples/suite.json'))), errors = validateSuite(suite);
@@ -116,10 +115,23 @@ try {
     if (r.dryRun) r.files.forEach(f => console.log('  ' + f));
   } else if (command === 'uninstall') {
     out(uninstall({ ide: arg('ide'), project: resolve(arg('project', '.')), dryRun: flag('dry-run') }));
+  } else if (command === 'audit') {
+    const { runAudit, auditMarkdown, auditHtml } = await import('../audit/audit.mjs');
+    const a = runAudit();
+    if (arg('out')) {
+      const d = resolve(arg('out'));
+      mkdirSync(d, { recursive: true });
+      writeFileSync(join(d, 'audit-report.json'), JSON.stringify(a, null, 2) + '\n');
+      writeFileSync(join(d, 'audit-report.md'), auditMarkdown(a));
+      writeFileSync(join(d, 'audit-report.html'), auditHtml(a));
+    }
+    out({ verdict: a.verdict, passed: a.passed, failed: a.failed, total: a.total, out: arg('out') ?? null });
+    if (a.failed) process.exitCode = 2;
   } else if (command === 'list-skills') listSkills().forEach(s => console.log(s));
   else if (command === 'matrix') out(compat());
   else if (command === 'trace' && args[1] === 'analyze') {
     const list = k => arg(k) ? arg(k).split(',') : undefined;
+    if (!arg('input')) throw new Error('--input trace.json is required');
     const res = analyzeTrace(readJson(resolve(arg('input'))), { forbidden: list('forbid') ?? [], allowed: list('allow') ?? null });
     out(res);
     process.exitCode = res.status === 'fail' ? 2 : res.status === 'inconclusive' ? 3 : 0;

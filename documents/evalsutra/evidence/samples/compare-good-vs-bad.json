@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 2,
+  "baseline": "demo-agent-acceptance",
+  "candidate": "demo-agent-acceptance",
+  "verdict": "FAIL",
+  "confounders": [],
+  "pairs": {
+    "matched": 6,
+    "scored": 5,
+    "signTestP": 1
+  },
+  "regressions": [
+    {
+      "id": "forbidden-tool",
+      "before": "pass",
+      "after": "fail",
+      "change": "regression"
+    }
+  ],
+  "improvements": [],
+  "changes": [
+    {
+      "id": "factual-answer",
+      "before": "pass",
+      "after": "pass",
+      "change": "unchanged_or_unscored"
+    },
+    {
+      "id": "json-contract",
+      "before": "pass",
+      "after": "pass",
+      "change": "unchanged_or_unscored"
+    },
+    {
+      "id": "version-format",
+      "before": "pass",
+      "after": "pass",
+      "change": "unchanged_or_unscored"
+    },
+    {
+      "id": "tool-order",
+      "before": "pass",
+      "after": "pass",
+      "change": "unchanged_or_unscored"
+    },
+    {
+      "id": "forbidden-tool",
+      "before": "pass",
+      "after": "fail",
+      "change": "regression"
+    },
+    {
+      "id": "latency",
+      "before": "pass",
+      "after": "inconclusive",
+      "change": "unchanged_or_unscored"
+    }
+  ]
+}

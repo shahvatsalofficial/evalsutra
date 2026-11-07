@@ -1,0 +1,25 @@
+# EvalSutra AI
+
+> Evidence-first, offline, keyless evaluation of AI agents. CLI plus 18 portable agent skills (Claude Code, Cursor, Codex, Gemini CLI, GitHub Copilot). Zero dependencies, Apache-2.0, created by Vatsal Shah.
+
+EvalSutra grades recorded agent observations (output, tool calls, latency) with deterministic assertions, treats missing evidence as inconclusive, never lets model-judge opinions prove a pass, gates releases as NO_GO / REVIEW / GO_CANDIDATE, compares runs for regressions, analyses tool traces, builds reproducibility capsules and audits itself (29 checks, Markdown + HTML reports). It does not run agents or call models.
+
+## Docs
+- [README](README.md): overview, quick start, proof
+- [Executive summary](documents/evalsutra/01-executive-summary.md)
+- [Functional specification](documents/evalsutra/02-functional-specification.md)
+- [Architecture](documents/evalsutra/03-architecture.md)
+- [Technical reference](documents/evalsutra/04-technical-reference.md): commands, formats, exit codes
+- [User guide](documents/evalsutra/05-user-guide.md)
+- [Skills catalog](documents/evalsutra/06-skills-catalog.md)
+- [Security and legal](documents/evalsutra/07-security-and-legal.md)
+- [Testing and evidence](documents/evalsutra/08-testing-and-evidence.md)
+- [Audit and trust](documents/evalsutra/09-audit-and-trust.md)
+- [Roadmap and status](documents/evalsutra/13-roadmap-and-status.md)
+
+## Quick start
+npx github:shahvatsalofficial/evalsutra run --suite suites/demo.json --observations examples/demo-observations.json --out artifacts/demo
+
+## Optional
+- [Changelog](CHANGELOG.md)
+- [Licence: Apache-2.0](LICENSE)

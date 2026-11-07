@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 2,
+  "kind": "offline-replay-evaluation",
+  "scoringVersion": "scoring-v2",
+  "suite": "demo-agent-acceptance",
+  "recordedAt": "2026-11-07T00:00:00Z",
+  "provenance": {
+    "source": "supplied local JSON observations",
+    "suiteDigest": "0294091e9fbba23c63d11d4c3b37f30126471c5f6f5f382760a6f39acb0b64fe",
+    "observationsDigest": "c69a7a0788ab8499bdbbf71082aa1208c158cfa9e9ea2eb7f10712f0804d925b",
+    "tool": "evalsutra@0.3.0",
+    "node": "v24.15.0",
+    "platform": "win32"
+  },
+  "warning": "Evaluates supplied observations only; no target agent was executed by EvalSutra.",
+  "metrics": {
+    "caseCount": 6,
+    "passed": 6,
+    "failed": 0,
+    "inconclusive": 0,
+    "errors": 0,
+    "skipped": 0,
+    "notSupported": 0,
+    "criticalFailures": 0,
+    "coverage": 1,
+    "passRate": 1,
+    "caseLevel": {
+      "scored": 6,
+      "passRateCI95": [
+        0.6096569663469354,
+        0.9999999999999999
+      ]
+    }
+  },
+  "thresholds": {
+    "minPassRate": 0.9,
+    "minCoverage": 0.9
+  },
+  "releaseGate": "GO_CANDIDATE",
+  "cases": [
+    {
+      "id": "factual-answer",
+      "title": "factual-answer",
+      "status": "pass",
+      "critical": true,
+      "sourceType": "test_fixture",
+      "assertions": [
+        {
+          "type": "normalized_equals",
+          "status": "pass",
+          "reason": "OK",
+          "detail": "Normalized answer comparison",
+          "weight": 3
+        }
+      ]
+    },
+    {
+      "id": "json-contract",
+      "title": "json-contract",
+      "status": "pass",
+      "critical": false,
+      "sourceType": "test_fixture",
+      "assertions": [
+        {
+          "type": "json_has_keys",
+          "status": "pass",
+          "reason": "OK",
+          "detail": "JSON required keys",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "version-format",
+      "title": "version-format",
+      "status": "pass",
+      "critical": false,
+      "sourceType": "test_fixture",
+      "assertions": [
+        {
+          "type": "regex",
+          "status": "pass",
+          "reason": "OK",
+          "detail": "Regex match",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "tool-order",
+      "title": "tool-order",
+      "status": "pass",
+      "critical": false,
+      "sourceType": "test_fixture",
+      "assertions": [
+        {
+          "type": "tool_order",
+          "status": "pass",
+          "reason": "OK",
+          "detail": "Expected tool order",
+          "weight": 1
+        },
+        {
+          "type": "max_steps",
+          "status": "pass",
+          "reason": "OK",
+          "detail": "Maximum tool steps",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "forbidden-tool",
+      "title": "forbidden-tool",
+      "status": "pass",
+      "critical": true,
+      "sourceType": "test_fixture",
+      "assertions": [
+        {
+          "type": "forbidden_tools",
+          "status": "pass",
+          "reason": "OK",
+          "detail": "Forbidden tool use",
+          "weight": 1
+        },
+        {
+          "type": "not_contains",
+          "status": "pass",
+          "reason": "OK",
+          "detail": "Forbidden text comparison",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "latency",
+      "title": "latency",
+      "status": "pass",
+      "critical": false,
+      "sourceType": "test_fixture",
+      "assertions": [
+        {
+          "type": "max_latency_ms",
+          "status": "pass",
+          "reason": "OK",
+          "detail": "Recorded latency compared to threshold",
+          "weight": 1
+        }
+      ]
+    }
+  ],
+  "reportDigest": "582cd02a454d1a733d7b41426a4b1bf40d3e96ffedfef20d7bf631fbf6d6fa92"
+}

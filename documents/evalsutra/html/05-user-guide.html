@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>5. User guide · EvalSutra AI</title><meta name="description" content="5. User guide: EvalSutra AI documentation by Vatsal Shah."><meta name="author" content="Vatsal Shah"><meta name="color-scheme" content="light dark">
+<meta property="og:title" content="5. User guide · EvalSutra AI"><meta property="og:description" content="5. User guide: EvalSutra AI documentation by Vatsal Shah."><meta property="og:type" content="website">
+<style>
+:root{--bg:#f7f8fb;--surface:#fff;--ink:#14161f;--muted:#566074;--line:#d9deea;--brand:#4b3fd6;--brand-ink:#fff;--ok:#0b6b3a;--ok-bg:#e3f6ea;--bad:#a4161a;--bad-bg:#fde8e8;--warn:#7a4b00;--warn-bg:#fff2d6;--info:#124e8a;--info-bg:#e4f0fc;--code:#eef0f7;--radius:14px;--shadow:0 1px 2px rgba(20,22,31,.06),0 8px 24px rgba(20,22,31,.06)}
+@media (prefers-color-scheme:dark){:root{--bg:#0e1017;--surface:#161a24;--ink:#eceff7;--muted:#9aa4ba;--line:#2a3042;--brand:#8f86ff;--brand-ink:#0e1017;--ok:#6fe0a0;--ok-bg:#12301f;--bad:#ff8d90;--bad-bg:#3a1618;--warn:#ffd27a;--warn-bg:#3a2a0a;--info:#8cc4ff;--info-bg:#10294a;--code:#1d2232;--shadow:none}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--brand)}a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:0;background:var(--brand);color:var(--brand-ink);padding:.6rem 1rem;z-index:9}.skip:focus{left:0}
+header.site{border-bottom:1px solid var(--line);background:var(--surface);position:sticky;top:0;z-index:5}
+header.site div{max-width:72rem;margin:auto;padding:.7rem 1.25rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+header.site strong{font-size:1.05rem;letter-spacing:.2px}header.site nav{display:flex;gap:.25rem 1rem;flex-wrap:wrap;margin-left:auto}header.site nav a{text-decoration:none;color:var(--muted);font-size:.92rem;padding:.2rem .1rem}header.site nav a[aria-current=page],header.site nav a:hover{color:var(--ink);box-shadow:0 2px 0 var(--brand)}
+main{max-width:72rem;margin:0 auto;padding:2rem 1.25rem 4rem}
+.hero{background:linear-gradient(135deg,var(--brand),#7b5cff 60%,#00a3a3);color:#fff;border-radius:calc(var(--radius) + 6px);padding:2.4rem 2rem;box-shadow:var(--shadow);margin-bottom:2rem}
+.hero h1{margin:.1rem 0 .4rem;font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.15}.hero p{margin:.2rem 0;max-width:46rem;opacity:.95}
+.hero .tag{font-weight:600;letter-spacing:.3px}
+h1,h2,h3{line-height:1.25}h2{margin-top:2.4rem;padding-bottom:.35rem;border-bottom:1px solid var(--line)}h3{margin-top:1.6rem}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));margin:1rem 0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.1rem 1.2rem;box-shadow:var(--shadow)}
+.card h3{margin:.1rem 0 .4rem;font-size:1.05rem}.card p{margin:.3rem 0;color:var(--muted)}
+.stat{font-size:2rem;font-weight:700;line-height:1.1}.stat small{display:block;font-size:.8rem;font-weight:500;color:var(--muted);margin-top:.3rem}
+table{border-collapse:collapse;width:100%;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:.95rem}
+caption{text-align:left;padding:.5rem 0;color:var(--muted);font-size:.9rem}
+th,td{padding:.55rem .75rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}thead th{background:var(--code);font-size:.85rem;text-transform:uppercase;letter-spacing:.4px}tbody tr:last-child td,tbody tr:last-child th{border-bottom:0}
+.tablewrap{overflow-x:auto;margin:1rem 0}
+code,pre{font:.9em/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}code{background:var(--code);padding:.1rem .35rem;border-radius:5px}
+pre{background:var(--code);padding:1rem;border-radius:10px;overflow-x:auto;border:1px solid var(--line)}pre code{background:none;padding:0}
+blockquote{margin:1rem 0;padding:.6rem 1rem;border-left:4px solid var(--brand);background:var(--info-bg);border-radius:0 10px 10px 0}
+.badge{display:inline-flex;align-items:center;gap:.3rem;padding:.12rem .6rem;border-radius:999px;font-size:.82rem;font-weight:600;border:1px solid currentColor;white-space:nowrap}
+.b-pass,.b-go_candidate{color:var(--ok);background:var(--ok-bg)}.b-fail,.b-no_go{color:var(--bad);background:var(--bad-bg)}.b-inconclusive,.b-review,.b-error,.b-not_supported,.b-skipped{color:var(--warn);background:var(--warn-bg)}.b-info{color:var(--info);background:var(--info-bg)}
+footer{max-width:72rem;margin:0 auto;padding:1.5rem 1.25rem 3rem;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line)}
+.toc{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1rem 1.3rem;margin:1rem 0}.toc ul{margin:.3rem 0;padding-left:1.2rem}
+@media (max-width:40rem){header.site nav{margin-left:0}.hero{padding:1.5rem 1.1rem}}
+@media print{header.site,.skip{display:none}body{background:#fff;color:#000}.card,table{box-shadow:none}a{color:#000}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body><a class="skip" href="#main">Skip to content</a>
+<header class="site"><div><strong>EvalSutra AI</strong><nav aria-label="Documentation"><a href="01-executive-summary.html">Executive summary</a><a href="02-functional-specification.html">Functional specification</a><a href="03-architecture.html">Architecture</a><a href="04-technical-reference.html">Technical reference</a><a href="05-user-guide.html" aria-current="page">User guide</a><a href="06-skills-catalog.html">Skills catalog</a><a href="07-security-and-legal.html">Security and legal</a><a href="index.html">All docs</a></nav></div></header>
+<main id="main"><article><h1 id="5-user-guide">5. User guide</h1><nav class="toc" aria-label="On this page"><strong>On this page</strong><ul><li><a href="#1-five-minute-tour">1. Five-minute tour</a></li><li><a href="#2-evaluate-your-own-agent">2. Evaluate your own agent</a></li><li><a href="#3-read-the-result">3. Read the result</a></li><li><a href="#4-compare-versions">4. Compare versions</a></li><li><a href="#5-analyse-a-tool-trace">5. Analyse a tool trace</a></li><li><a href="#6-install-the-skills-in-your-editor">6. Install the skills in your editor</a></li><li><a href="#7-prove-the-tool-itself-works">7. Prove the tool itself works</a></li><li><a href="#8-use-in-ci">8. Use in CI</a></li><li><a href="#troubleshooting">Troubleshooting</a></li></ul></nav>
+<h2 id="1-five-minute-tour">1. Five-minute tour</h2>
+<pre><code>git clone https://github.com/shahvatsalofficial/evalsutra.git
+cd evalsutra
+node packages/cli/evalsutra.mjs run --suite suites/demo.json --observations examples/demo-observations.json --out artifacts/demo</code></pre>
+<p>You get <code>artifacts/demo/report.html</code> (open in a browser), <code>report.md</code>, <code>report.json</code>, <code>junit.xml</code>. The gate is <code>GO_CANDIDATE</code> because the sample evidence is clean.</p>
+<p>Now the failing sample:</p>
+<pre><code>node packages/cli/evalsutra.mjs run --suite suites/demo.json --observations examples/demo-observations-bad.json --out artifacts/bad</code></pre>
+<p>Exit code is 2 and the gate is <code>NO_GO</code>: the agent used a forbidden tool and leaked a canary value. One more case had no latency, so it is <code>inconclusive</code> rather than guessed.</p>
+<h2 id="2-evaluate-your-own-agent">2. Evaluate your own agent</h2>
+<ol><li>Run <code>evalsutra init --dir my-eval</code> to get a starter suite and observations.</li><li>Edit <code>suite.json</code>. Write cases <strong>before</strong> looking at results. Mark safety cases <code>critical</code>.</li><li>Record what your agent did for each case: the final text, the list of tool names it called, and the latency. Save as <code>observations.json</code>. Set <code>sourceType</code> honestly (<code>actual_run</code> if you ran it, <code>human_label</code> if a person judged it).</li><li><code>evalsutra validate --suite my-eval/suite.json</code></li><li><code>evalsutra run --suite my-eval/suite.json --observations my-eval/observations.json --out my-eval/out</code></li><li>Open <code>my-eval/out/report.html</code>.</li></ol>
+<h2 id="3-read-the-result">3. Read the result</h2>
+<div class="tablewrap"><table><thead><tr><th>You see</th><th>It means</th><th>What to do</th></tr></thead><tbody><tr><td><code>NO_GO</code></td><td>at least one case failed</td><td>open the failed case; fix the agent or the case</td></tr><tr><td><code>REVIEW</code></td><td>nothing failed but evidence is incomplete</td><td>supply the missing field named by the reason code</td></tr><tr><td><code>GO_CANDIDATE</code></td><td>evidence met your thresholds</td><td>a human still decides to release</td></tr><tr><td><code>inconclusive</code></td><td>evidence missing or weak</td><td>never treat as pass</td></tr><tr><td>coverage below 100%</td><td>some assertions could not be scored</td><td>check <code>OUTPUT_MISSING</code>, <code>TRACE_MISSING</code>, <code>LATENCY_MISSING</code></td></tr></tbody></table></div>
+<h2 id="4-compare-versions">4. Compare versions</h2>
+<pre><code>evalsutra run --suite s.json --observations v1.json --out out/v1
+evalsutra run --suite s.json --observations v2.json --out out/v2
+evalsutra compare --baseline out/v1/report.json --candidate out/v2/report.json --out out/compare.json</code></pre>
+<p><code>FAIL</code> means a case regressed. <code>INCONCLUSIVE</code> means the comparison is not fair (different cases, or fewer than 5 scored pairs). Fix the confounders listed in the output.</p>
+<h2 id="5-analyse-a-tool-trace">5. Analyse a tool trace</h2>
+<pre><code>evalsutra trace analyze --input trace.json --forbid delete_repo,read_private_key</code></pre>
+<p>Look for <code>UNSUPPORTED_SUCCESS_CLAIM</code>: the agent said it succeeded after its last tool call failed.</p>
+<h2 id="6-install-the-skills-in-your-editor">6. Install the skills in your editor</h2>
+<pre><code>evalsutra install --ide claude --project /path/to/project --dry-run
+evalsutra install --ide claude --project /path/to/project</code></pre>
+<div class="tablewrap"><table><thead><tr><th><code>--ide</code></th><th>Folder written</th></tr></thead><tbody><tr><td>claude</td><td><code>.claude/skills/</code></td></tr><tr><td>cursor</td><td><code>.cursor/skills/</code></td></tr><tr><td>codex</td><td><code>.agents/skills/</code></td></tr><tr><td>gemini</td><td><code>.gemini/skills/</code></td></tr><tr><td>copilot</td><td><code>.github/skills/</code></td></tr></tbody></table></div>
+<p>Then ask your AI, for example: &quot;Use evalsutra-prime to plan an evaluation of my agent.&quot; Skills run on <strong>your editor&#39;s AI</strong>, not on EvalSutra. Whether your editor discovers them depends on its version; EvalSutra only verifies the file copy. Remove with <code>evalsutra uninstall</code> (your edits are kept).</p>
+<h2 id="7-prove-the-tool-itself-works">7. Prove the tool itself works</h2>
+<pre><code>evalsutra audit --out audit</code></pre>
+<p>Open <code>audit/audit-report.html</code>. Every check shows expected and observed values.</p>
+<h2 id="8-use-in-ci">8. Use in CI</h2>
+<p>See <a href="04-technical-reference.html#use-in-ci">Technical reference</a>.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<div class="tablewrap"><table><thead><tr><th>Symptom</th><th>Cause</th><th>Fix</th></tr></thead><tbody><tr><td><code>Invalid evidence: ...</code> exit 4</td><td>suite or observations malformed</td><td>run <code>validate</code>, read each message</td></tr><tr><td><code>Refusing to overwrite</code></td><td>file or skill already exists</td><td>choose another folder or remove the old one</td></tr><tr><td><code>Unsupported --ide</code></td><td>typo</td><td>use claude, cursor, codex, gemini or copilot</td></tr><tr><td><code>runner &quot;x&quot; is not_supported</code></td><td>only replay exists</td><td>use <code>--runner replay</code></td></tr><tr><td>Gate stays <code>REVIEW</code></td><td>an inconclusive case</td><td>add the missing observation field</td></tr><tr><td><code>npx</code> cannot find command</td><td>package not on npm yet</td><td>use <code>npx github:shahvatsalofficial/evalsutra</code></td></tr></tbody></table></div></article></main>
+<footer>EvalSutra AI · Created by Vatsal Shah · Apache-2.0 · Generated offline; no scripts, no trackers, no network calls.</footer></body></html>

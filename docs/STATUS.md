@@ -1,4 +1,6 @@
-# Feature status (v0.2.0)
+# Feature status (v0.3.0)
+Superseded in detail by documents/evalsutra/13-roadmap-and-status.md.
+
 Verified locally on Windows 11, Node 24 (`npm test`: 44 pass, 1 skipped symlink test that is POSIX-only). Linux/macOS results come only from real CI runs.
 
 | Capability | Status | Evidence |
