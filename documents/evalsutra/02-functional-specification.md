@@ -99,6 +99,6 @@ Every `run` writes `report.json`, `report.md`, `report.html`, `junit.xml`. HTML 
 |---|---|
 | Works offline, no keys | no network APIs in source [S4] |
 | Deterministic | same inputs give identical output [R1, R2] |
-| Cross-platform | CI on Ubuntu, Windows, macOS; Node 20, 22, 24 |
+| Cross-platform | CI on Ubuntu, Windows, macOS; Node 22, 24, 26 |
 | Small attack surface | zero dependencies, no lifecycle scripts [S5, S6] |
 | Accessible output | semantic HTML, WCAG-minded colour contrast, no colour-only status |

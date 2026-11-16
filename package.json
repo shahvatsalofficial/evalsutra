@@ -1,6 +1,6 @@
 {
   "name": "evalsutra",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "EvalSutra AI: evidence-first, keyless, offline agent evaluation CLI plus 18 portable agent skills for Claude Code, Cursor, Codex, Gemini CLI and Copilot.",
   "keywords": ["ai-agents", "evaluation", "agent-skills", "claude-code", "cursor", "codex", "gemini-cli", "copilot", "llm-evals", "cli"],
   "license": "Apache-2.0",
@@ -9,7 +9,7 @@
   "repository": {"type": "git", "url": "git+https://github.com/shahvatsalofficial/evalsutra.git"},
   "bugs": {"url": "https://github.com/shahvatsalofficial/evalsutra/issues"},
   "type": "module",
-  "engines": {"node": ">=20"},
+  "engines": {"node": ">=22"},
   "bin": {"evalsutra": "./packages/cli/evalsutra.mjs"},
   "files": ["packages", ".agents", "skills", ".claude-plugin", "suites", "examples", "policies", "docs", "LICENSE", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md", "SUPPORT.md", "NOTICE", "THIRD_PARTY_NOTICES.md", "CITATION.cff", "llms.txt", "documents", "README.md", "SECURITY.md", "CHANGELOG.md"],
   "scripts": {

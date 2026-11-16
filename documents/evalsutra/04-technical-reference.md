@@ -2,7 +2,7 @@
 
 ## Requirements
 
-Node.js 20 or newer. Tested on Node 20, 22 and 24 on Ubuntu, Windows and macOS in GitHub Actions.
+Node.js 22 or newer (Node 20 reached end of life in April 2026). Tested on Node 22, 24 and 26 on Ubuntu, Windows and macOS in GitHub Actions.
 
 ## Install and run
 

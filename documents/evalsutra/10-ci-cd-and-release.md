@@ -2,11 +2,11 @@
 
 ## Pipeline
 
-File: `.github/workflows/ci.yml`. Triggers: push, pull request. Permissions: `contents: read` only.
+Files: `.github/workflows/ci.yml` (tests) and `publish.yml` (npm release). Triggers: push and pull request for CI; a published GitHub release for npm. CI permissions: `contents: read` only. Actions are pinned to full commit SHAs (checkout v7.0.1, setup-node v7.1.0, upload-artifact v7.0.2); Dependabot proposes weekly updates.
 
 | Job | Matrix | Steps |
 |---|---|---|
-| `tests` | Ubuntu, Windows, macOS × Node 20, 22, 24 | `npm test`, `npm run validate`, `npm run doctor`, `audit`, docs freshness check |
+| `tests` | Ubuntu, Windows, macOS × Node 22, 24, 26 | `npm test`, `npm run validate`, `npm run doctor`, `audit`, docs freshness check |
 
 No secrets are used. No network is needed by the tests. A failing job blocks nothing automatically unless branch protection requires it; enable branch protection with the `tests` checks required.
 
@@ -30,7 +30,7 @@ No secrets are used. No network is needed by the tests. A failing job blocks not
 
 ## npm publish (maintainer action)
 
-Published as [`evalsutra`](https://www.npmjs.com/package/evalsutra) from the maintainer's own npm account. Publishing needs that account's login and two-factor code, so it is always a maintainer step.
+Published as [`evalsutra`](https://www.npmjs.com/package/evalsutra). A manual `npm publish` needs the maintainer's login and two-factor code. The repository also contains `.github/workflows/publish.yml`, which publishes with npm **trusted publishing** (OIDC, provenance, no stored token) when a GitHub release is published. **One-time maintainer setup** on npmjs.com: package `evalsutra`, Settings, Trusted Publisher, GitHub Actions, owner `shahvatsalofficial`, repository `evalsutra`, workflow `publish.yml`. Until that is configured, the workflow fails and the manual route above is the one that works. The workflow has not yet run successfully.
 
 ```bash
 npm test && node packages/cli/evalsutra.mjs audit   # must be green
@@ -47,4 +47,4 @@ Semantic versioning. 0.x means the CLI and report format may still change; chang
 
 ## Hardening backlog
 
-Pin Actions to commit SHAs, add dependency review, secret scanning (Gitleaks), CodeQL, OpenSSF Scorecard, SBOM, signed releases. None of these is claimed as done.
+Done: Actions pinned to SHAs, Dependabot for Actions, provenance publish workflow (untested). Still open: dependency review, secret scanning (Gitleaks), CodeQL, OpenSSF Scorecard, SBOM, signed releases. None of the open items is claimed as done.

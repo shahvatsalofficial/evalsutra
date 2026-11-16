@@ -6,12 +6,12 @@
 [![CI](https://github.com/shahvatsalofficial/evalsutra/actions/workflows/ci.yml/badge.svg)](https://github.com/shahvatsalofficial/evalsutra/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/evalsutra.svg)](https://www.npmjs.com/package/evalsutra)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
-[![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](package.json)
+[![Node](https://img.shields.io/badge/node-%3E%3D22-brightgreen.svg)](package.json)
 [![Dependencies: 0](https://img.shields.io/badge/dependencies-0-success.svg)](THIRD_PARTY_NOTICES.md)
 
 Created by **Vatsal Shah**. Apache-2.0. Free for commercial use.
 
-EvalSutra tells you, with evidence, whether an AI agent did what it was supposed to do. It grades **recorded observations** (final output, tool calls, latency) against rules you wrote first, and it refuses to guess: missing evidence is `inconclusive`, never a pass; a model's opinion can never prove success. It needs only Node.js 20+, no API key, no account and no network.
+EvalSutra tells you, with evidence, whether an AI agent did what it was supposed to do. It grades **recorded observations** (final output, tool calls, latency) against rules you wrote first, and it refuses to guess: missing evidence is `inconclusive`, never a pass; a model's opinion can never prove success. It needs only Node.js 22+, no API key, no account and no network.
 
 > **Honest scope:** EvalSutra does **not** run your agent and does not call any model. `GO_CANDIDATE` means "your recorded evidence met your thresholds", not "safe to ship". See [what is not built yet](#status).
 
@@ -52,7 +52,7 @@ You get `report.html`, `report.md`, `report.json` and `junit.xml`. Open the HTML
 
 | Claim | Where to verify it |
 |---|---|
-| Tests pass on Ubuntu, Windows, macOS × Node 20, 22, 24 | [GitHub Actions](https://github.com/shahvatsalofficial/evalsutra/actions) |
+| Tests pass on Ubuntu, Windows, macOS × Node 22, 24, 26 | [GitHub Actions](https://github.com/shahvatsalofficial/evalsutra/actions) |
 | Raw test output and counts | [test-run.txt](documents/evalsutra/evidence/test-run.txt), [summary](documents/evalsutra/evidence/README.md) |
 | 29-check self-audit, expected vs observed | [audit-report.md](documents/evalsutra/evidence/samples/audit/audit-report.md), [HTML](documents/evalsutra/evidence/samples/audit/audit-report.html) |
 | Grader has 0 false positives and 0 false negatives on 36 known-answer cases | audit checks G1 to G3 |
@@ -134,7 +134,7 @@ Everything is in [`documents/evalsutra/`](documents/evalsutra/) as Markdown with
 
 ## Status
 
-**Implemented and tested (v0.3.1):** offline evaluator, statuses and gates, comparison, trace analysis, reports, repro capsule, installer, 18 skills, self-audit, documentation set.
+**Implemented and tested (v0.4.0):** offline evaluator, statuses and gates, comparison, trace analysis, reports, repro capsule, installer, 18 skills, self-audit, documentation set.
 
 **Not implemented:** live agent runner, sandbox, server, dashboard, SARIF, OpenTelemetry, Promptfoo / Inspect AI / Harbor / MCP Inspector adapters, calibrated LLM judge, `audit-plugin`, JSON Schema files.
 

@@ -15,7 +15,7 @@ Uses the built-in `node:test` runner. No test framework is installed.
 
 The numbers are generated, not typed. See [evidence/README.md](evidence/README.md) for the table, [test-run.txt](evidence/test-run.txt) for the full output and [test-summary.json](evidence/test-summary.json) for machine-readable counts.
 
-Operating-system coverage comes from GitHub Actions: Ubuntu, Windows, macOS × Node 20, 22, 24 (9 jobs). Check the live status at [Actions](https://github.com/shahvatsalofficial/evalsutra/actions). A badge is only trustworthy because it links to those real runs.
+Operating-system coverage comes from GitHub Actions: Ubuntu, Windows, macOS × Node 22, 24, 26 (9 jobs). Check the live status at [Actions](https://github.com/shahvatsalofficial/evalsutra/actions). A badge is only trustworthy because it links to those real runs.
 
 ## What the tests cover
 

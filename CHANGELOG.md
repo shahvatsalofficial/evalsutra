@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0 (2026-11-16)
+- **Breaking:** minimum Node.js is now 22 (`engines`). Node 20 reached end of life in April 2026.
+- CI matrix now Node 22, 24 and 26 on Ubuntu, Windows, macOS; Actions upgraded to checkout v7.0.1, setup-node v7.1.0, upload-artifact v7.0.2 and pinned to commit SHAs; `persist-credentials: false`.
+- Added `.github/workflows/publish.yml` (npm trusted publishing with provenance on release; needs one-time npm setup) and Dependabot for Actions.
+- Docs updated for supported Node versions and release process.
+
 ## 0.3.1 (2026-11-07)
 - Fixed: published 0.3.0 package failed audit check L4 (CONTRIBUTING.md and CODE_OF_CONDUCT.md were missing from `files`); SUPPORT.md also added.
 - Added `evalsutra demo [--bad]`: runs the bundled demo from any folder. README quick start used repo-relative paths that failed under npx.

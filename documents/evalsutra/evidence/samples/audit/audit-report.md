@@ -1,7 +1,7 @@
 # EvalSutra self-audit report
 
 **Verdict: PASS** — 29/29 checks passed, 0 failed.  
-Tool: `evalsutra@0.3.1` · Node v24.15.0 · win32
+Tool: `evalsutra@0.4.0` · Node v24.15.0 · win32
 
 > Self-audit of the EvalSutra package files. It audits the tool, not any third-party agent.
 
@@ -38,7 +38,7 @@ Tool: `evalsutra@0.3.1` · Node v24.15.0 · win32
 | T2 | Trace analysis | Empty trace is inconclusive, never pass | inconclusive | inconclusive | PASS |
 | S1 | Security | Report HTML/XML escape hostile suite names | no raw <img | escaped | PASS |
 | S2 | Security | Shell metacharacters in fixtures are inert data | valid, nothing executed | valid | PASS |
-| S3 | Security | Secret scan over 136 text files | 0 files with credential patterns | 0 | PASS |
+| S3 | Security | Secret scan over 138 text files | 0 files with credential patterns | 0 | PASS |
 | S4 | Security | No network/process/dynamic-code APIs in 10 source files | 0 hits | 0 | PASS |
 | S5 | Security | Zero runtime dependencies (no supply-chain surface) | 0 | 0 | PASS |
 | S6 | Security | No install-time lifecycle scripts | 0 | 0 | PASS |

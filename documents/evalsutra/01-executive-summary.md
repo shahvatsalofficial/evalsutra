@@ -8,7 +8,7 @@ Teams ship AI agents and judge them by reading the agent's own words. An agent t
 
 ## What it is
 
-- A command-line tool (`evalsutra`) that needs only Node.js 20 or newer. No API key, no account, no network, no dependencies.
+- A command-line tool (`evalsutra`) that needs only Node.js 22 or newer. No API key, no account, no network, no dependencies.
 - A set of 18 portable specialist **skills** (instruction files) that Claude Code, Cursor, Codex, Gemini CLI and GitHub Copilot can load, so the AI in your editor follows the same evidence rules.
 - Reports in JSON, Markdown, HTML and JUnit, plus an independent-style **self-audit** report that shows the tool's own accuracy.
 
@@ -39,7 +39,7 @@ Teams ship AI agents and judge them by reading the agent's own words. An agent t
 
 ## Current maturity
 
-Version 0.3.1 is an early release (0.x). The evaluator, reports, installer, trace analysis, repro capsule and self-audit are implemented and tested. Live agent execution, sandboxing, a server, a dashboard and third-party integrations are **planned**. See [Roadmap and status](13-roadmap-and-status.md).
+Version 0.4.0 is an early release (0.x). The evaluator, reports, installer, trace analysis, repro capsule and self-audit are implemented and tested. Live agent execution, sandboxing, a server, a dashboard and third-party integrations are **planned**. See [Roadmap and status](13-roadmap-and-status.md).
 
 ## Who should read what
 

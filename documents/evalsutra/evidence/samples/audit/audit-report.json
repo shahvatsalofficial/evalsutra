@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "tool": "evalsutra@0.3.1",
+  "tool": "evalsutra@0.4.0",
   "node": "v24.15.0",
   "platform": "win32",
   "scope": "Self-audit of the EvalSutra package files. It audits the tool, not any third-party agent.",
@@ -208,7 +208,7 @@
     {
       "category": "Security",
       "id": "S3",
-      "title": "Secret scan over 136 text files",
+      "title": "Secret scan over 138 text files",
       "expected": "0 files with credential patterns",
       "observed": "0",
       "status": "pass",

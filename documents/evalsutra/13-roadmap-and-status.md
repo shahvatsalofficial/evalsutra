@@ -2,7 +2,7 @@
 
 Legend: **Done** = implemented and tested. **Planned** = not implemented. Nothing marked planned should be described to users as available.
 
-## Status matrix (v0.3.1)
+## Status matrix (v0.4.0)
 
 | Capability | Status |
 |---|---|

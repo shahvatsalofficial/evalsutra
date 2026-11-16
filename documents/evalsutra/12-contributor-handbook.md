@@ -8,7 +8,7 @@ cd evalsutra
 npm test
 ```
 
-Node 20+. No `npm install` is needed because there are no dependencies.
+Node 22+. No `npm install` is needed because there are no dependencies.
 
 ## Layout
 
