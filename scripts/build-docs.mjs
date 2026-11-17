@@ -73,6 +73,16 @@ export function mdToHtml(md) {
   return { html: out.join('\n'), toc };
 }
 
+// Evidence README rendered to HTML so links from the docs resolve on the web (GitHub Pages).
+export function evidencePages() {
+  const p = join(SRC, 'evidence/README.md');
+  if (!existsSync(p)) return {};
+  const { html } = mdToHtml(readFileSync(p, 'utf8'));
+  const nav = '<nav aria-label="Documentation"><a href="../html/index.html">All docs</a><a href="../html/09-audit-and-trust.html">Audit and trust</a></nav>';
+  const out = page({ title: 'Evidence · EvalSutra AI', description: 'Generated proof: test run, sample reports and self-audit for EvalSutra AI.', body: `<article>${html}</article>`, nav });
+  return { 'README.html': out, 'index.html': out };
+}
+
 export function buildDocs() {
   const files = readdirSync(SRC).filter(f => f.endsWith('.md')).sort();
   const docs = files.map(f => {
@@ -110,6 +120,11 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   for (const [name, html] of Object.entries(built)) {
     const p = join(OUT, name);
     if (check) { if (!existsSync(p) || readFileSync(p, 'utf8').replace(/\r\n/g, '\n') !== html) stale.push(name); }
+    else writeFileSync(p, html);
+  }
+  for (const [name, html] of Object.entries(evidencePages())) {
+    const p = join(SRC, 'evidence', name);
+    if (check) { if (!existsSync(p) || readFileSync(p, 'utf8').replace(/\r\n/g, '\n') !== html) stale.push('evidence/' + name); }
     else writeFileSync(p, html);
   }
   const assets = join(SRC, 'assets');

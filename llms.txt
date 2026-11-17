@@ -5,6 +5,7 @@
 EvalSutra grades recorded agent observations (output, tool calls, latency) with deterministic assertions, treats missing evidence as inconclusive, never lets model-judge opinions prove a pass, gates releases as NO_GO / REVIEW / GO_CANDIDATE, compares runs for regressions, analyses tool traces, builds reproducibility capsules and audits itself (29 checks, Markdown + HTML reports). It does not run agents or call models.
 
 ## Docs
+- [Live documentation site](https://shahvatsalofficial.github.io/evalsutra/): same pages as below, rendered
 - [README](README.md): overview, quick start, proof
 - [Executive summary](documents/evalsutra/01-executive-summary.md)
 - [Functional specification](documents/evalsutra/02-functional-specification.md)

@@ -4,6 +4,7 @@
 *Test Intelligence. Measure Truth. Build Trust.*
 
 [![CI](https://github.com/shahvatsalofficial/evalsutra/actions/workflows/ci.yml/badge.svg)](https://github.com/shahvatsalofficial/evalsutra/actions/workflows/ci.yml)
+[![Docs](https://img.shields.io/badge/docs-live-4b3fd6.svg)](https://shahvatsalofficial.github.io/evalsutra/)
 [![npm](https://img.shields.io/npm/v/evalsutra.svg)](https://www.npmjs.com/package/evalsutra)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D22-brightgreen.svg)](package.json)
@@ -120,7 +121,7 @@ Full table with CLI support per skill: [Skills catalog](documents/evalsutra/06-s
 
 ## Documentation
 
-Everything is in [`documents/evalsutra/`](documents/evalsutra/) as Markdown with matching styled HTML in `html/`.
+**Live site: https://shahvatsalofficial.github.io/evalsutra/** . Source: [`documents/evalsutra/`](documents/evalsutra/) as Markdown with matching styled HTML in `html/`, deployed by GitHub Actions on every change.
 
 | Audience | Read |
 |---|---|

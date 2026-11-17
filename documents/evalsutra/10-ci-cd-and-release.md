@@ -17,6 +17,10 @@ No secrets are used. No network is needed by the tests. A failing job blocks not
 | 0.3.0 npm package: README demo failed outside a clone; audit L4 failed | demo used repo-relative paths; CONTRIBUTING.md and CODE_OF_CONDUCT.md not in `files` | added `demo` command; added files; tests assert both |
 | Windows + Node 20 job failed with `Could not find ...tests\*.test.mjs` | PowerShell does not expand globs and Node 20 does not either | `npm test` now runs `node --test`, which discovers files itself |
 
+## Documentation site
+
+`.github/workflows/pages.yml` deploys the generated HTML (`documents/evalsutra/html`) and evidence to GitHub Pages at https://shahvatsalofficial.github.io/evalsutra/ on every push to main that touches `documents/`. Pages source is set to **GitHub Actions** in repository settings. Always run `node scripts/build-docs.mjs` before committing docs, because the site publishes the committed HTML.
+
 ## Release checklist
 
 1. `npm test` green locally.

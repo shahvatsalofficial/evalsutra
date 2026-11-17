@@ -85,6 +85,7 @@ ${exitTable}
 - No live IDE, model or cloud service was used to produce any file here.
 `;
 writeFileSync(join(EV, 'README.md'), readme);
+spawnSync(node, [join(ROOT, 'scripts/build-docs.mjs')], { cwd: ROOT }); // render evidence/README.html
 const bad_ = [r1.status !== 0, r2.status !== 2, cmp.status !== 2, gate.status !== 2, trace.status !== 2, audit.status !== 0, t.status !== 0].some(Boolean);
 console.log(`evidence: tests=${summary.tests} pass=${summary.pass} fail=${summary.fail} skipped=${summary.skipped}${bad_ ? ' PROBLEM' : ' ok'}`);
 process.exit(bad_ ? 1 : 0);
