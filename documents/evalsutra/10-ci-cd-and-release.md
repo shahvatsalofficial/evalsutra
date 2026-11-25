@@ -1,4 +1,4 @@
-# 10. CI/CD and release
+# CI/CD and release
 
 ## Pipeline
 
@@ -10,6 +10,8 @@ Files: `.github/workflows/ci.yml` (tests) and `publish.yml` (npm release). Trigg
 
 No secrets are used. No network is needed by the tests. A failing job blocks nothing automatically unless branch protection requires it; enable branch protection with the `tests` checks required.
 
+<!--@diagram:ci-->
+
 ## Lessons recorded
 
 | Incident | Cause | Fix |
@@ -19,7 +21,7 @@ No secrets are used. No network is needed by the tests. A failing job blocks not
 
 ## Documentation site
 
-`.github/workflows/pages.yml` deploys the generated HTML (`documents/evalsutra/html`) and evidence to GitHub Pages at https://shahvatsalofficial.github.io/evalsutra/ on every push to main that touches `documents/`. Pages source is set to **GitHub Actions** in repository settings. Always run `node scripts/build-docs.mjs` before committing docs, because the site publishes the committed HTML.
+`.github/workflows/pages.yml` deploys the generated HTML (`documents/evalsutra/html`) and evidence to GitHub Pages at https://shahvatsalofficial.github.io/evalsutra/ on every push to main that touches `documents/`. Pages source is set to **GitHub Actions** in repository settings. Always run `node scripts/build-docs.mjs` before committing docs, because the site publishes the committed HTML. The site is a light-first design with an optional dark theme; styles, scripts and figure code live in `documents/site/`. Pages add figures with comment directives such as `<!--@diagram:gate-->`, which stay invisible when the Markdown is read on GitHub.
 
 ## Release checklist
 

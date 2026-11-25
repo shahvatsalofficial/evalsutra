@@ -1,4 +1,4 @@
-# 13. Roadmap and status
+# Roadmap and status
 
 Legend: **Done** = implemented and tested. **Planned** = not implemented. Nothing marked planned should be described to users as available.
 

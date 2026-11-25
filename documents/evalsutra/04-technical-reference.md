@@ -1,4 +1,4 @@
-# 4. Technical reference
+# Technical reference
 
 ## Requirements
 

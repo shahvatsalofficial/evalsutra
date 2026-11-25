@@ -1,10 +1,24 @@
-# 1. Executive summary
+# Executive summary
 
 > **Test Intelligence. Measure Truth. Build Trust.** EvalSutra AI is a free, open-source, offline tool that tells you, with evidence, whether an AI agent did what it was supposed to do.
 
 ## What problem it solves
 
 Teams ship AI agents and judge them by reading the agent's own words. An agent that says "Done, all tests pass" may have run no tests. Prose is not proof. EvalSutra grades **recorded evidence** (final output, tool calls, timing) against rules you write in advance, and refuses to guess when evidence is missing.
+
+## The picture
+
+<!--@diagram:pipeline-->
+
+## Before and after
+
+| Question a manager asks | Without EvalSutra | With EvalSutra |
+|---|---|---|
+| Did the agent do the task? | We read its answer | We check recorded output and tool calls |
+| Did it touch anything it should not? | We hope not | Forbidden tools and canaries are checked |
+| Is the new version worse? | A demo looked fine | Case-by-case comparison |
+| What did we not test? | Unknown | Listed as inconclusive with a reason |
+| Can an auditor re-check? | Screenshots | Reports with input digests and a repro capsule |
 
 ## What it is
 
@@ -29,6 +43,10 @@ Teams ship AI agents and judge them by reading the agent's own words. An agent t
 | 29-check self-audit with expected vs observed values | [Testing and evidence](08-testing-and-evidence.md), [Audit](09-audit-and-trust.md) |
 | Raw test output and sample reports committed | `documents/evalsutra/evidence/` |
 | Honest limits written down | [Roadmap and status](13-roadmap-and-status.md) |
+
+## Assurance at a glance
+
+<!--@auditbars-->
 
 ## Business value
 

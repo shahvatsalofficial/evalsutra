@@ -1,4 +1,4 @@
-# 7. Security and legal
+# Security and legal
 
 > This page is engineering documentation, not legal advice. Have counsel review before relying on it for a commercial decision.
 
@@ -10,7 +10,7 @@
 |---|---|---|
 | Malicious fixture runs a command | assertions are pure comparisons; no `eval`, no `child_process`, no `Function` in source | audit S2, S4 |
 | Catastrophic regex (ReDoS) | length cap 200, nested-quantifier and back-reference rejection, input capped at 100,000 chars | audit G1 row `regex-redos` |
-| XSS in reports | every user value escaped; no script in any generated page; Markdown converter drops `javascript:` and `data:` links | audit S1 |
+| XSS in reports | every user value escaped; no script in any report (the documentation website uses a small theme and menu script); Markdown converter drops `javascript:` and `data:` links | audit S1 |
 | Secret leakage in reports | observations' text is not copied into reports; capsule redacts known token formats | tests, audit S3 |
 | Supply-chain attack | zero dependencies; no install lifecycle scripts | audit S5, S6 |
 | Path traversal and symlink escape on install | target resolved with `realpath` and checked inside the project | install tests |

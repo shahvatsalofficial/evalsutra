@@ -1,4 +1,4 @@
-# 12. Contributor handbook
+# Contributor handbook
 
 ## Set up
 
@@ -22,6 +22,7 @@ suites examples policies   demo data and gate policy
 tests               node:test files
 scripts             build-docs, build-evidence, installers
 documents/evalsutra this documentation (Markdown source, html/ generated)
+documents/site      website styles, scripts and figures
 ```
 
 ## Rules of the project

@@ -1,4 +1,4 @@
-# 6. Skills catalog
+# Skills catalog
 
 EvalSutra ships 18 specialist **skills**. A skill is a `SKILL.md` file (YAML `name` and `description`, then instructions) that an AI coding tool loads on demand. Skills are *instructions for the host AI*. They are not programs, they make no model calls of their own, and they do not execute anything by themselves.
 
@@ -30,6 +30,8 @@ EvalSutra ships 18 specialist **skills**. A skill is a `SKILL.md` file (YAML `na
 Each skill defines: use cases, objective, procedure, input, output, allowed tools, stop conditions, and a handoff contract. All of them share these safety rules: confirm scope and permission first, prefer objective postconditions, label missing data inconclusive, never edit benchmark ground truth, never fabricate scores, never touch real secrets, never silently change security settings. [audit checks K1 to K4]
 
 ## Install locations
+
+<!--@diagram:install-->
 
 | Host | Folder | Status |
 |---|---|---|

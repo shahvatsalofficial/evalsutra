@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased (documentation)
+- Rebuilt the documentation website: landing page, sidebar navigation, light theme by default with a dark toggle, mobile menu, flowcharts, charts and architecture figures.
+- New pages: real-world scenarios (terminal output computed by the engine at build time) and how it works. User guide rewritten.
+- HTML reports are now light-themed only.
+
 ## 0.4.0 (2026-11-16)
 - **Breaking:** minimum Node.js is now 22 (`engines`). Node 20 reached end of life in April 2026.
 - CI matrix now Node 22, 24 and 26 on Ubuntu, Windows, macOS; Actions upgraded to checkout v7.0.1, setup-node v7.1.0, upload-artifact v7.0.2 and pinned to commit SHAs; `persist-credentials: false`.

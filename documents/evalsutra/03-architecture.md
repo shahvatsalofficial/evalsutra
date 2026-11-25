@@ -1,6 +1,6 @@
-# 3. Architecture
+# Architecture
 
-![EvalSutra architecture: CLI over validate, deterministic core, reporters, repro capsule, trace analysis, self-audit and skills](assets/architecture.svg)
+<!--@layers-->
 
 ## Context (C4 level 1)
 
@@ -30,6 +30,8 @@ There is no network, database, queue, server or model call.
 | Doc and evidence builders | `scripts/build-docs.mjs`, `scripts/build-evidence.mjs` | this documentation and its proof |
 
 ## Data flow
+
+<!--@diagram:pipeline-->
 
 1. CLI reads suite and observations (`readJson`, errors become exit code 1 or 4).
 2. `validateSuite` rejects bad ids, unknown assertion types, unsafe regex, bad weights, bad thresholds.

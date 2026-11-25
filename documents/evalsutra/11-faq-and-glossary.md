@@ -1,4 +1,4 @@
-# 11. FAQ and glossary
+# FAQ and glossary
 
 ## FAQ
 

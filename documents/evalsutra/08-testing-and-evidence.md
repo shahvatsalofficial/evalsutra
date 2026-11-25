@@ -1,4 +1,4 @@
-# 8. Testing and evidence
+# Testing and evidence
 
 ## How to run every test
 
@@ -16,6 +16,10 @@ Uses the built-in `node:test` runner. No test framework is installed.
 The numbers are generated, not typed. See [evidence/README.md](evidence/README.md) for the table, [test-run.txt](evidence/test-run.txt) for the full output and [test-summary.json](evidence/test-summary.json) for machine-readable counts.
 
 Operating-system coverage comes from GitHub Actions: Ubuntu, Windows, macOS × Node 22, 24, 26 (9 jobs). Check the live status at [Actions](https://github.com/shahvatsalofficial/evalsutra/actions). A badge is only trustworthy because it links to those real runs.
+
+## Audit at a glance
+
+<!--@auditbars-->
 
 ## What the tests cover
 
@@ -49,6 +53,8 @@ Operating-system coverage comes from GitHub Actions: Ubuntu, Windows, macOS × N
 | latency | **inconclusive** | no latency recorded; not guessed |
 
 Gate: `NO_GO`, exit code 2. Full files in [evidence/samples](evidence/README.md).
+
+<!--@samplebars-->
 
 ## Interpreting honestly
 

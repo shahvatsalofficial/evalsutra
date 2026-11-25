@@ -1,0 +1,10 @@
+{
+  "decision": "NO_GO",
+  "reasons": [
+    "report gate is NO_GO",
+    "critical failure",
+    "passRate < 0.9",
+    "inconclusive cases exceed policy"
+  ],
+  "note": "GO_CANDIDATE is not deployment approval."
+}

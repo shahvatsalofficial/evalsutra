@@ -1,4 +1,4 @@
-# 2. Functional specification
+# Functional specification
 
 This page states what EvalSutra does, in behaviour a tester can check. Each rule is covered by an automated test or an audit check (IDs in brackets).
 
@@ -40,7 +40,11 @@ This page states what EvalSutra does, in behaviour a tester can check. Each rule
 
 A case takes the worst assertion status in this order: fail, error, not_supported, inconclusive, pass. Skipped cases are counted separately and never as passes. [E3]
 
+<!--@diagram:status-->
+
 ## Evidence hierarchy
+
+<!--@ladder-->
 
 Observation `sourceType` is one of `actual_run`, `imported_trace`, `human_label`, `test_fixture`, `model_judge`, `unverified_claim`. If the type is `model_judge` or `unverified_claim`, a would-be pass becomes **inconclusive** (`WEAK_SOURCE`). A failure from such a source still counts, because evidence of a problem is safe to act on. [E2]
 
@@ -53,6 +57,8 @@ Observation `sourceType` is one of `actual_run`, `imported_trace`, `human_label`
 
 ## Release gate
 
+<!--@diagram:gate-->
+
 | Gate | Condition |
 |---|---|
 | `NO_GO` | any failed case, or any critical failure, or pass rate below the threshold |
@@ -62,6 +68,8 @@ Observation `sourceType` is one of `actual_run`, `imported_trace`, `human_label`
 Defaults: `minPassRate` 1, `minCoverage` 1. A suite can lower them in its `gate` block. `GO_CANDIDATE` is never deployment approval. [E1, E4, E5]
 
 ## Comparison (regression firewall)
+
+<!--@diagram:compare-->
 
 `compare` pairs cases by id between a baseline and a candidate report.
 
@@ -79,9 +87,11 @@ The result also contains an exact two-sided sign-test p-value on regressions ver
 
 ## Reports
 
-Every `run` writes `report.json`, `report.md`, `report.html`, `junit.xml`. HTML is accessible (skip link, semantic table, status as text plus symbol, light and dark themes, print styles) and contains no script. All user text is escaped. [S1]
+Every `run` writes `report.json`, `report.md`, `report.html`, `junit.xml`. Report HTML is accessible (skip link, semantic table, status as text plus symbol, light theme, print styles) and contains no script. All user text is escaped. [S1]
 
 ## Repro capsule
+
+<!--@diagram:capsule-->
 
 `repro export` writes redacted copies of suite, observations and report plus `manifest.json` with a SHA-256 per file. `repro verify` detects any changed, missing or renamed file. The capsule is **not signed**, so it detects accidents and casual edits, not a determined forger.
 

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "calls": 3,
+  "failedCalls": 3,
+  "findings": [
+    {
+      "code": "FORBIDDEN_TOOL",
+      "evidence": "e1",
+      "detail": "forbidden tool run_tests"
+    },
+    {
+      "code": "FORBIDDEN_TOOL",
+      "evidence": "e2",
+      "detail": "forbidden tool run_tests"
+    },
+    {
+      "code": "FORBIDDEN_TOOL",
+      "evidence": "e3",
+      "detail": "forbidden tool run_tests"
+    },
+    {
+      "code": "REDUNDANT_LOOP",
+      "evidence": "e3",
+      "detail": "run_tests repeated 3x with identical arguments"
+    },
+    {
+      "code": "UNSUPPORTED_SUCCESS_CLAIM",
+      "evidence": "e4",
+      "detail": "final text claims success but last tool call failed"
+    }
+  ],
+  "status": "fail"
+}

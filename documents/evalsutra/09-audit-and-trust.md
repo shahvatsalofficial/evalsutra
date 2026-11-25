@@ -1,4 +1,4 @@
-# 9. Audit and trust
+# Audit and trust
 
 EvalSutra can audit itself with one command and show its working.
 
@@ -7,6 +7,8 @@ evalsutra audit --out audit
 ```
 
 This writes `audit-report.md`, `audit-report.html` and `audit-report.json`. A pre-generated copy is in [evidence/samples/audit](evidence/samples/audit/audit-report.md).
+
+<!--@auditbars-->
 
 ## What the 29 checks cover
 
